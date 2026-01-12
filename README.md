@@ -113,7 +113,9 @@ Finally, we get:
 
 $$2\dot{r}\ddot{r}+\frac{dV_{eff}}{dr} \dot{r}=0$$
 
-Dividing both sides by $\dot{r}$ we get the formula for $\ddot{r}$ which is acceleration of the radial coordinate (time derivative of radial velocity $\dot{r}$):$$\ddot{r}=-\frac{1}{2}\frac{dV_{eff}}{dr}$$
+Dividing both sides by $\dot{r}$ we get the formula for $\ddot{r}$ which is acceleration of the radial coordinate (time derivative of radial velocity $\dot{r}$):
+
+$$\ddot{r}=-\frac{1}{2}\frac{dV_{eff}}{dr}$$
 
 The derivative of $V_{eff}(r)=\frac{h^2}{r^2}-\frac{2Mh^2}{r^3}$ is:
 
