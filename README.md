@@ -71,7 +71,7 @@ There are [2 constants of motion](https://en.wikipedia.org/wiki/Schwarzschild_ge
 $$\left (1 - \frac{2M}{r} \right) \dot t = E \Rightarrow \dot t=\frac{E}{1-\frac{2M}{r}}[2]$$
 2. Angular momentum ($h$) associated with rotational symmetry (the black hole looks the same from every angle):
 
-$$h=||r \times v||=r^2 \dot{\phi} \Rightarrow  \dot{\phi}=\frac{h}{r^2}[3]$$
+$$h=\|r \times v\|=r^2 \dot{\phi} \Rightarrow  \dot{\phi}=\frac{h}{r^2}[3]$$
 
 *Here the dot represents differentiation with respect to an affine parameter $\lambda$ since proper time $\tau$ is zero for light (i.e. $\dot t = \frac{dt}{d\lambda}$ and $\dot{\phi} = \frac{d\phi}{d\lambda}$ 
 
