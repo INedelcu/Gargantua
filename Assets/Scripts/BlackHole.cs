@@ -15,13 +15,17 @@ public class BlackHole : MonoBehaviour
     void Start()
     {
     }
+    
+    void Update()
+    {
+    }
 
     void OnDestroy()
     {
         output?.Release();
     }
-
-    void Update()
+    
+    void AllocateRenderTarget()
     {
         if (cameraWidth != Camera.main.pixelWidth || cameraHeight != Camera.main.pixelHeight)
         {
@@ -52,6 +56,8 @@ public class BlackHole : MonoBehaviour
     [ImageEffectOpaque]
     void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
+        AllocateRenderTarget();
+
         int kernelIndex = shader.FindKernel("CSMain");
         if (kernelIndex == -1)
         {
