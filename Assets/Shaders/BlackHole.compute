@@ -1,0 +1,41 @@
+
+#pragma kernel CSMain
+
+RWTexture2D<float4> g_Output;
+
+float g_Zoom;
+float g_AspectRatio;
+
+uint g_CameraResX;
+uint g_CameraResY;
+
+// Unity built-in
+float4x4 unity_CameraToWorld;
+
+[numthreads(8, 8, 1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= g_CameraResX || id.y >= g_CameraResY)
+        return;
+    
+    uint2 launchIndex = uint2(id.x, g_CameraResY - id.y - 1);
+    uint2 launchDim = uint2(g_CameraResX, g_CameraResY);
+
+    // Shoot rays through the center of a pixel.
+    float2 frameCoord = launchIndex + float2(0.5, 0.5);    
+
+    float2 ndcCoords = frameCoord / float2(launchDim.x - 1, launchDim.y - 1);
+
+    // Transform in [-1, 1] and apply perspective.
+    ndcCoords = ndcCoords * 2 - float2(1, 1);
+    ndcCoords = ndcCoords * g_Zoom;
+
+    // Get a ray in view space.
+    float3 viewDirection = normalize(float3(ndcCoords.x * g_AspectRatio, ndcCoords.y, 1));
+
+    // Rotate the ray from view space to world space.
+    float3 rayDirection = mul((float3x3) unity_CameraToWorld, viewDirection);
+   
+    g_Output[launchIndex] = float4(rayDirection.xyz, 1);
+
+}
