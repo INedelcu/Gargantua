@@ -3,6 +3,9 @@
 
 RWTexture2D<float4> g_Output;
 
+TextureCube<float4> g_EnvTex;
+SamplerState sampler_g_EnvTex;
+
 float g_Zoom;
 float g_AspectRatio;
 
@@ -35,7 +38,9 @@ void CSMain (uint3 id : SV_DispatchThreadID)
 
     // Rotate the ray from view space to world space.
     float3 rayDirection = mul((float3x3) unity_CameraToWorld, viewDirection);
-   
-    g_Output[launchIndex] = float4(rayDirection.xyz, 1);
+    
+    float3 spaceTexColor = g_EnvTex.SampleLevel(sampler_g_EnvTex, rayDirection, 0).rgb;
+     
+    g_Output[launchIndex] = float4(spaceTexColor.xyz, 1);
 
 }

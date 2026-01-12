@@ -7,6 +7,8 @@ public class BlackHole : MonoBehaviour
 {
     public ComputeShader shader;
 
+    public Cubemap envSpaceTexture = null;
+
     private RenderTexture output = null;
 
     private uint cameraWidth = 0;
@@ -78,6 +80,8 @@ public class BlackHole : MonoBehaviour
 
         shader.SetFloat(Shader.PropertyToID("g_Zoom"), Mathf.Tan(Mathf.Deg2Rad * Camera.main.fieldOfView * 0.5f));
         shader.SetFloat(Shader.PropertyToID("g_AspectRatio"), cameraWidth / (float)cameraHeight);
+
+        shader.SetTexture(kernelIndex, Shader.PropertyToID("g_EnvTex"), envSpaceTexture);
 
         // Output
         shader.SetTexture(kernelIndex, Shader.PropertyToID("g_Output"), output);
