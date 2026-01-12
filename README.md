@@ -59,6 +59,7 @@ These coordinates are used for the exterior of the black hole only. For both the
 [**Schwarzschild geodesics**](https://en.wikipedia.org/wiki/Schwarzschild_geodesics) describe the motion of test particles in the [gravitational field](https://en.wikipedia.org/wiki/Gravitational_field) of a central fixed mass $M$, that is, motion in the Schwarzschild metric. Photons travel along paths called [null geodesic](https://physics.stackexchange.com/questions/188859/what-is-a-null-geodesic) meaning that $ds^2=0$.
 
 Since the spacetime metric around Schwarzschild black hole is symmetric about $\theta = \frac{\pi}{2}$, any geodesic that begins moving in that plane will remain in that plane indefinitely. Therefore, we orient the coordinate system so that the orbit of the particle lies in that plane and fix the $\theta$ coordinate to be $\frac {\pi }{2}$ ($\,d\theta=0$ and $\sin\theta=1$) so that the metric (of this plane) simplifies to:
+
 $$0=c^2 d \tau^{2} = \left (1 - \frac{r_s}{r} \right) c^2 dt^2 - \left(1-\frac{r_s}{r}\right)^{-1} dr^2 - r^2 d\phi^2$$
 
 We are going to use [Newton notation](https://en.wikipedia.org/wiki/Notation_for_differentiation#Newton's_notation) for differentiation of quantities. Thus, $\dot{r}$ instead of $dr$, which means the derivative of $r$(position) with respect to $t$ which is simply the velocity. Also in physics one can use [natural units](https://en.wikipedia.org/wiki/Natural_units) ($G=c=1$) for simplification.
@@ -121,5 +122,6 @@ $$\frac{dV_{eff}}{dr}=-2\frac{h^2}{r^3}+3\frac{2Mh^2}{r^4}$$
 And $\ddot{r}$ is finally (using $r_{s}=2M$ as [geometrized units](https://en.wikipedia.org/wiki/Geometrized_unit_system)):
 
 $$\ddot{r}=\frac{h^2}{r^3} - \frac{3}{2}\frac{r_{s}h^2}{r^4}$$
+
 $\ddot{r}$ which is acceleration of the radial coordinate $r$ (a scalar) but to actually use it, we would need an acceleration in Cartesian coordinates $\vec{a}=(\ddot{x},\ddot{y}, \ddot{z}).$
 
