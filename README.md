@@ -248,7 +248,9 @@ The HLSL code for this would be:
     }
 ```
 
+
 ## Development progress screenshots:
+
 
 <img src="https://github.com/INedelcu/Gargantua/blob/main/Images/1.png?raw=true" width="1280">
 
@@ -261,3 +263,6 @@ The HLSL code for this would be:
 <img src="https://github.com/INedelcu/Gargantua/blob/main/Images/5.png?raw=true" width="1280">
 
 <img src="https://github.com/INedelcu/Gargantua/blob/main/Images/6.png?raw=true" width="1280">
+
+<img src="https://github.com/INedelcu/Gargantua/blob/main/Images/7.png?raw=true" width="1280">
+
