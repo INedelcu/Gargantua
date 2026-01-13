@@ -6,6 +6,9 @@ RWTexture2D<float4> g_Output;
 TextureCube<float4> g_EnvTex;
 SamplerState sampler_g_EnvTex;
 
+Texture2D<float4> g_AccretionDiskGradient;
+SamplerState my_point_clamp_sampler;
+
 float g_Zoom;
 float g_AspectRatio;
 
@@ -30,6 +33,10 @@ static float kRs = 10.0;
 // kStepSize is the integration step (dt)
 static float kStepSize = 0.5;
 static int kMaxSteps = 300;
+
+// In this simulation, the accretion disk is "artificially" generated for art purposes only and for better observing the gravitational lens effect.
+static float kAccretionStart = 20.0;
+static float kAccretionEnd = 60.0;
 
 float3 GetAcceleration(float3 pos, float h2)
 {
@@ -87,6 +94,35 @@ void CSMain (uint3 id : SV_DispatchThreadID)
         {
             g_Output[launchIndex] = float4(0, 0, 0, 1);
             return;
+        }
+        
+        // Accretion disk logic
+        // Check if we crossed y = 0 plane
+        if (pos.y * prevPos.y <= 0)
+        {
+            // Calculate t where y is 0
+            // Linear interpolation: 0 = prevPos.y + t * (pos.y - prevPos.y) -> t = -prevPos.y / (pos.y - prevPos.y)
+            float dY = pos.y - prevPos.y;
+            
+            // Avoid dividing by 0?
+            if (abs(dY) > 1e-6f)
+            {
+                float t = -prevPos.y / dY;
+
+                // Find the intersection point
+                float3 hitPoint = prevPos + (pos - prevPos) * t;
+                float hitDist = length(hitPoint);
+
+                // Check if this hit is within the accretion disk bounds
+                if (hitDist > kAccretionStart && hitDist < kAccretionEnd)
+                {
+                     // Normalize u between 0.0 (kAccretionStart) and 1.0 (kAccretionEnd)
+                    float u = (hitDist - kAccretionStart) / (kAccretionEnd - kAccretionStart);
+                    float3 diskColor = g_AccretionDiskGradient.SampleLevel(my_point_clamp_sampler, float2(u, 0), 0).rgb;
+                    g_Output[launchIndex] = float4(diskColor, 1);
+                    return;
+                }
+            }
         }
     
         // Compute x_(n+1)

@@ -11,6 +11,8 @@ public class BlackHole : MonoBehaviour
 
     private RenderTexture output = null;
 
+    private Texture2D accretionDiskGradient = null;
+
     private uint cameraWidth = 0;
     private uint cameraHeight = 0;
 
@@ -27,7 +29,7 @@ public class BlackHole : MonoBehaviour
         output?.Release();
     }
     
-    void AllocateRenderTarget()
+    void AllocateResources()
     {
         if (cameraWidth != Camera.main.pixelWidth || cameraHeight != Camera.main.pixelHeight)
         {
@@ -53,12 +55,32 @@ public class BlackHole : MonoBehaviour
             cameraWidth = (uint)Camera.main.pixelWidth;
             cameraHeight = (uint)Camera.main.pixelHeight;
         }
+
+        if (accretionDiskGradient == null)
+        {
+            const uint size = 16;
+            accretionDiskGradient = new Texture2D((int)size, 1, TextureFormat.RGBAFloat, false);
+            accretionDiskGradient.hideFlags = HideFlags.HideAndDontSave;
+            Color[] pixels = new Color[size];
+            for (int i = 0; i < pixels.Length; i++)
+            {
+                float t = (float)i / (float)(pixels.Length - 1);
+                float r = 1.0f;
+                float g = 0.8f * Mathf.Exp(-2.0f * t);
+                float b = 0.2f * Mathf.Exp(-5.0f * t);
+                float a = 1.0f;
+
+                pixels[i] = new Color(r, g, b, a);
+            }
+            accretionDiskGradient.SetPixels(pixels);
+            accretionDiskGradient.Apply();
+        }
     }
 
     [ImageEffectOpaque]
     void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
-        AllocateRenderTarget();
+        AllocateResources();
 
         int kernelIndex = shader.FindKernel("CSMain");
         if (kernelIndex == -1)
@@ -84,6 +106,8 @@ public class BlackHole : MonoBehaviour
         shader.SetVector(Shader.PropertyToID("g_CameraPos"), Camera.main.transform.position);
 
         shader.SetTexture(kernelIndex, Shader.PropertyToID("g_EnvTex"), envSpaceTexture);
+
+        shader.SetTexture(kernelIndex, Shader.PropertyToID("g_AccretionDiskGradient"), accretionDiskGradient);
 
         // Output
         shader.SetTexture(kernelIndex, Shader.PropertyToID("g_Output"), output);
