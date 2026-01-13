@@ -70,7 +70,9 @@ $$0=-\left (1 - \frac{2M}{r} \right) \dot t^2 + \left(1-\frac{2M}{r}\right)^{-1}
 
 There are [2 constants of motion](https://en.wikipedia.org/wiki/Schwarzschild_geodesics#Orbits_of_test_particles) caused by the time independence and symmetry (the black hole doesn't change over time and is spherically symmetric):
 1. Energy ($E$) which is associated with time translation symmetry (the metric components don't depend on time coordinate):
+
 $$\left (1 - \frac{2M}{r} \right) \dot t = E \Rightarrow \dot t=\frac{E}{1-\frac{2M}{r}}[2]$$
+
 2. Angular momentum ($h$) associated with rotational symmetry (the black hole looks the same from every angle):
 
 $$h=\|r \times v\|=r^2 \dot{\phi} \Rightarrow  \dot{\phi}=\frac{h}{r^2}[3]$$
