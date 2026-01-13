@@ -123,7 +123,125 @@ $$\frac{dV_{eff}}{dr}=-2\frac{h^2}{r^3}+3\frac{2Mh^2}{r^4}$$
 
 And $\ddot{r}$ is finally (using $r_{s}=2M$ as [geometrized units](https://en.wikipedia.org/wiki/Geometrized_unit_system)):
 
-$$\ddot{r}=\frac{h^2}{r^3} - \frac{3}{2}\frac{r_{s}h^2}{r^4}$$
+$$\ddot{r}=\frac{h^2}{r^3} - \frac{3}{2}\frac{r_{s}h^2}{r^4}[5]$$
 
-$\ddot{r}$ which is acceleration of the radial coordinate $r$ (a scalar) but to actually use it, we would need an acceleration in Cartesian coordinates $\vec{a}=(\ddot{x},\ddot{y}, \ddot{z}).$
+$\ddot{r}$ which is linear acceleration of the radial coordinate $r$ (a scalar) but to actually use it, we would need an acceleration in Cartesian coordinates $\vec{a}=(\ddot{x},\ddot{y}, \ddot{z}).$ Since we fixes $\theta = \frac{\pi}{2}$ earlier because of the rotational symmetry, it means that we can derive the velocity vector in the XY plane and by differentiating it, we get the radial acceleration vector (imagine the photon is attracted to the center of the black hole).
 
+In polar coordinates, the position of a particle is defined by $r$ the radial coordinate and the angle $\phi$ (in the XY plane) which is the rotation around the Z axis.
+
+$$\bold{\vec{r}} = r\vec{e_r}$$
+
+- $\vec{e_r}$ is the unit vector pointing outward from the origin
+- $\vec{e_\phi}$ is the unit vector pointing in the direction of increasing angle $\phi$ which is perpendicular on $\vec{e_r}$
+
+<p align="center">
+<img src="https://github.com/INedelcu/Gargantua/blob/main/Images/spherical_coordinates_xy.png?raw=true"  alt="A spherical coordinates"  width="300"  height="300">
+</p>
+
+Because the particle moves, the angle $\vec{e_\phi}$ changes with time. This means that $\vec{e_r}$ and $\vec{e_\phi}$ are not constant since they change their direction. In Cartesian coordinates [they are](https://youtu.be/_BuyCwdCxAc?si=XzhAFWh1CEIJUaHd):
+
+$$\vec{e_r}=\vec{x}\cos{\phi} + \vec{y}\sin{\phi}$$ 
+
+and
+
+$$\vec{e_\phi}=-\vec{x}\sin{\phi} + \vec{y}\cos{\phi}$$
+
+Their time derivatives are (using chain rule and taking into account that $\phi$ depends on time):
+
+$$\dot{\vec{e_r}}=\frac{d}{dt}\left(\vec{x}\cos{\phi} + \vec{y}\sin{\phi}\right)=\dot{\phi}\left(-\vec{x}\sin{\phi}+\vec{y}\cos{\phi}\right)=\dot{\phi}\vec{e_\phi}$$
+
+and 
+
+$$\dot{\vec{e_\phi}}=\frac{d}{dt}\left(-\vec{x}\sin{\phi} + \vec{y}\cos{\phi}\right)=\dot{\phi}\left(-\vec{x}\cos{\phi}-\vec{y}\sin{\phi}\right)=-\dot{\phi}\left(\vec{x}\cos{\phi}+\vec{y}\sin{\phi}\right)=-\dot{\phi}\vec{e_r}$$
+
+To summarize:
+
+$$\dot{\vec{e_r}}=\dot{\phi}\vec{e_\phi} \ \ \text{and}\ \  \dot{\vec{e_\phi}}=-\dot{\phi}\vec{e_r}$$ 
+
+To obtain the velocity vector, one need to take the derivative of the position vector $\bold{\vec{r}}=r\vec{e_r}$:
+
+$$\bold{\vec{v}}=\frac{d\bold{\vec{r}}}{dt}=\frac{d}{dt}\left(r\vec{e_r}\right)=\dot{r}\vec{e_r} + r\dot{\vec{e_r}}$$
+
+Since $\dot{\vec{e_r}}=\dot{\phi}\vec{e_\phi}$:
+
+$$\bold{\vec{v}}=\dot{r}\vec{e_r}+r\dot{\phi}\vec{e_{\phi}}$$
+
+To obtain the acceleration vector, we differentiate $\bold{v}$ with respect of time:
+
+$$\bold{\vec{a}}=\frac{d\bold{\vec{v}}}{dt}=\frac{d}{dt}\left(\dot{r}\vec{e_r}+r\dot{\phi}\vec{e_{\phi}}\right)$$
+
+Applying the product rule to both terms:
+
+$$\frac{d}{dt}\left(\dot{r}\vec{e_r}\right)=\ddot{r}\vec{e_r}+\dot{r}\dot{\vec{e_r}} [6]$$
+
+and
+
+$$\frac{d}{dt}\left(r\dot{\phi}\vec{e_{\phi}}\right)=\dot{r}\dot{\phi}\vec{e_\phi}+r\ddot{\phi}\vec{e_\phi}+r\dot{\phi}\dot{\vec{e_\phi}}[7]$$
+
+Combining [5] and [6] we get:
+
+$$\bold{\vec{a}}=\left(\ddot{r}\vec{e_r}+\dot{r}\dot{\vec{e_r}}\right) + \left(\dot{r}\dot{\phi}\vec{e_\phi}+r\ddot{\phi}\vec{e_\phi}+r\dot{\phi}\dot{\vec{e_\phi}}\right)$$
+
+Substituting $\dot{\vec{e_r}}=\dot{\phi}$ and $\dot{\vec{e_\phi}}=-\dot{\phi}\vec{e_r}$:
+
+$$\bold{\vec{a}}=\left(\ddot{r}\vec{e_r}+\dot{r}\dot{\phi}\vec{e_\phi}\right) + \left(\dot{r}\dot{\phi}\vec{e_\phi}+r\ddot{\phi}\vec{e_\phi}-r\dot{\phi}^2\vec{e_r}\right)$$
+
+Grouping the terms by $\vec{e_r}$ and $\vec{e_\phi}$ we finally get the acceleration vector:
+
+$$\bold{\vec{a}}=\left(\ddot{r}-r\dot{\phi^2}\right)\vec{e_r} + \left(r\ddot{\phi}+2\dot{r}\dot{\phi}\right)\vec{e_\phi}$$
+
+So the radial component of the acceleration vector is:
+
+$$a_r=\ddot{r}-r\dot{\phi}^2$$
+
+Combining with [5] with [3]:
+
+$$a_r=\frac{h^2}{r^3} - \frac{3}{2}\frac{r_{s}h^2}{r^4} -r\left(\frac{h^2}{r^4}\right)=-\frac{3}{2}\frac{r_{s}h^2}{r^4}$$
+
+$a_r$ is the magnitude of the radial acceleration vector, and to get a vector, it must be multiplied by $\vec{e_r}=\bold{\vec{r}}/r$:
+
+$$\vec{\bold{a_r}}=-\frac{3}{2}\frac{r_{s}h^2}{r^5}\bold{\vec{r}}$$
+
+This is a function of $r$ (since $h$ is constant) and it can be noticed that points in the opposite direction of $\vec{\bold{r}}$ basically toward the center of the black hole.
+
+The HLSL code for this would be:
+```
+    // These should depend on the Rs actually
+    #define kStepSize 0.2
+    #define kMaxSteps 1000
+    
+    float3 GetAcceleration(float3 pos, float h2)
+    {
+       float r2 = dot(pos, pos);
+       float r5 = pow(r2, 2.5);       
+       return pos * (-1.5 * kRs * h2 / r5);
+    }
+
+    // For computing the path, since the acceleration depends on positon only we can use Størmer–Verlet integration    
+    // Assume the initial ray direction in world space is called rayDirection
+    // The origin is actually the camera position
+    // Initial position and velocity: x_0
+    float3 pos = CameraPos;
+    float3 vel = rayDirection;
+
+    // Precalculate the angular momentum which is constant during integration
+    float h = length(cross(pos, vel));
+    float h2 = h*h;
+    
+    float3 prevPos = pos;
+    
+    // Compute next position: x_1
+    pos = prevPos + vel * kStepSize + 0.5f * GetAcceleration(pos, h2) * kStepSize * kStepSize;
+    
+    // Calculate the trajectory of the photon around the black hole
+    // https://en.wikipedia.org/wiki/Verlet_integration#Basic_St%C3%B8rmer%E2%80%93Verlet
+    for (int i = 0; i < kMaxSteps; i++)
+    {
+        // Compute x_(n+1)
+        float3 nextPos = 2 * pos - prevPos + GetAcceleration(pos, h2) * kStepSize * kStepSize;
+		
+        prevPos = pos;
+                
+        pos = nextPos;
+    }
+```
