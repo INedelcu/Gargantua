@@ -81,6 +81,8 @@ public class BlackHole : MonoBehaviour
         shader.SetFloat(Shader.PropertyToID("g_Zoom"), Mathf.Tan(Mathf.Deg2Rad * Camera.main.fieldOfView * 0.5f));
         shader.SetFloat(Shader.PropertyToID("g_AspectRatio"), cameraWidth / (float)cameraHeight);
 
+        shader.SetVector(Shader.PropertyToID("g_CameraPos"), Camera.main.transform.position);
+
         shader.SetTexture(kernelIndex, Shader.PropertyToID("g_EnvTex"), envSpaceTexture);
 
         // Output

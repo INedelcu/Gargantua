@@ -12,8 +12,31 @@ float g_AspectRatio;
 uint g_CameraResX;
 uint g_CameraResY;
 
+float3 g_CameraPos;
+
 // Unity built-in
 float4x4 unity_CameraToWorld;
+
+// Here we simulate a theoretical Schwarzschild black hole. This is a uncharged, non-rotating, spherically symmetric mass.
+// In reality, all (Kerr) black holes rotate slower or faster. 
+// The initial spin rate of a black hole is caused by the conservation of the residual angular momentum of the colapsed stellar core. 
+// After that, the spin rate can change dramatically.
+
+// For non-rotating black holes, the Schwarzschild radius and the event horizon are the same (Rs = 2*G*M/c^2)
+// For Earth this would be 9 mm and for the biggest known black holes this is 194 billion km.
+static float kRs = 10.0;
+
+// The larger the kRs, the larger kMaxSteps or kStepSize should be
+// kStepSize is the integration step (dt)
+static float kStepSize = 0.5;
+static int kMaxSteps = 300;
+
+float3 GetAcceleration(float3 pos, float h2)
+{
+    float r2 = dot(pos, pos);
+    float r5 = pow(r2, 2.5);
+    return pos * (-1.5 * kRs * h2 / r5);
+}
 
 [numthreads(8, 8, 1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
@@ -39,7 +62,42 @@ void CSMain (uint3 id : SV_DispatchThreadID)
     // Rotate the ray from view space to world space.
     float3 rayDirection = mul((float3x3) unity_CameraToWorld, viewDirection);
     
-    float3 spaceTexColor = g_EnvTex.SampleLevel(sampler_g_EnvTex, rayDirection, 0).rgb;
+    float3 pos = g_CameraPos;
+
+    float3 vel = rayDirection;
+
+    // Precalculate the angular momentum which is conserved (constant) during integration
+    float3 h = cross(pos, vel);
+    float h2 = dot(h, h);
+
+    float3 prevPos = pos;
+
+    // Compute next position: x_1
+    pos = prevPos + vel * kStepSize + 0.5f * GetAcceleration(pos, h2) * kStepSize * kStepSize;
+
+    // Calculate the trajectory of the photon around the black hole
+    // Use basic Stormer-Verlet integration where the current acceleration depends on position only. https://en.wikipedia.org/wiki/Verlet_integration#Basic_St%C3%B8rmer%E2%80%93Verlet
+    // Angular momentum is conserved, so it's constant during integration
+    for (int i = 0; i < kMaxSteps; i++)
+    {
+        float r2 = dot(pos, pos);
+    
+        // Photon crossed the event horizon
+        if (r2 < kRs * kRs)
+        {
+            g_Output[launchIndex] = float4(0, 0, 0, 1);
+            return;
+        }
+    
+        // Compute x_(n+1)
+        float3 nextPos = 2 * pos - prevPos + GetAcceleration(pos, h2) * kStepSize * kStepSize;
+
+        prevPos = pos;
+    
+        pos = nextPos;
+    }
+   
+    float3 spaceTexColor = g_EnvTex.SampleLevel(sampler_g_EnvTex, normalize(pos - prevPos), 0).rgb;
      
     g_Output[launchIndex] = float4(spaceTexColor.xyz, 1);
 
