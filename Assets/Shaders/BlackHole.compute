@@ -36,7 +36,7 @@ static int kMaxSteps = 300;
 
 // In this simulation, the accretion disk is "artificially" generated for art purposes only and for better observing the gravitational lens effect.
 static float kAccretionStart = 20.0;
-static float kAccretionEnd = 60.0;
+static float kAccretionEnd = 70.0;
 
 float3 GetAcceleration(float3 pos, float h2)
 {
