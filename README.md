@@ -146,7 +146,7 @@ and
 
 $$\vec{e_\phi}=-\vec{x}\sin{\phi} + \vec{y}\cos{\phi}$$
 
-Their time derivatives are (using chain rule and taking into account that $\phi$ depends on time):
+Their time derivatives are (using product and chain rule and taking into account that $\phi$ depends on time):
 
 $$\dot{\vec{e_r}}=\frac{d}{dt}\left(\vec{x}\cos{\phi} + \vec{y}\sin{\phi}\right)=\dot{\phi}\left(-\vec{x}\sin{\phi}+\vec{y}\cos{\phi}\right)=\dot{\phi}\vec{e_\phi}$$
 
