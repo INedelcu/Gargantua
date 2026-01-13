@@ -129,7 +129,7 @@ $\ddot{r}$ which is linear acceleration of the radial coordinate $r$ (a scalar) 
 
 In polar coordinates, the position of a particle is defined by $r$ the radial coordinate and the angle $\phi$ (in the XY plane) which is the rotation around the Z axis.
 
-$$\textbf{\vec{r}} = r\vec{e_r}$$
+$$\mathbf{\vec{r}} = r\vec{e_r}$$
 
 - $\vec{e_r}$ is the unit vector pointing outward from the origin
 - $\vec{e_\phi}$ is the unit vector pointing in the direction of increasing angle $\phi$ which is perpendicular on $\vec{e_r}$
@@ -158,17 +158,17 @@ To summarize:
 
 $$\dot{\vec{e_r}}=\dot{\phi}\vec{e_\phi} \ \ \text{and}\ \  \dot{\vec{e_\phi}}=-\dot{\phi}\vec{e_r}$$ 
 
-To obtain the velocity vector, one need to take the derivative of the position vector $\textbf{\vec{r}}=r\vec{e_r}$:
+To obtain the velocity vector, one need to take the derivative of the position vector $\mathbf{\vec{r}}=r\vec{e_r}$:
 
-$$\textbf{\vec{v}}=\frac{d\textbf{\vec{r}}}{dt}=\frac{d}{dt}\left(r\vec{e_r}\right)=\dot{r}\vec{e_r} + r\dot{\vec{e_r}}$$
+$$\mathbf{\vec{v}}=\frac{d\mathbf{\vec{r}}}{dt}=\frac{d}{dt}\left(r\vec{e_r}\right)=\dot{r}\vec{e_r} + r\dot{\vec{e_r}}$$
 
 Since $\dot{\vec{e_r}}=\dot{\phi}\vec{e_\phi}$:
 
-$$\textbf{\vec{v}}=\dot{r}\vec{e_r}+r\dot{\phi}\vec{e_{\phi}}$$
+$$\mathbf{\vec{v}}=\dot{r}\vec{e_r}+r\dot{\phi}\vec{e_{\phi}}$$
 
-To obtain the acceleration vector, we differentiate $\textbf{v}$ with respect of time:
+To obtain the acceleration vector, we differentiate $\mathbf{v}$ with respect of time:
 
-$$\textbf{\vec{a}}=\frac{d\textbf{\vec{v}}}{dt}=\frac{d}{dt}\left(\dot{r}\vec{e_r}+r\dot{\phi}\vec{e_{\phi}}\right)$$
+$$\mathbf{\vec{a}}=\frac{d\mathbf{\vec{v}}}{dt}=\frac{d}{dt}\left(\dot{r}\vec{e_r}+r\dot{\phi}\vec{e_{\phi}}\right)$$
 
 Applying the product rule to both terms:
 
@@ -180,15 +180,15 @@ $$\frac{d}{dt}\left(r\dot{\phi}\vec{e_{\phi}}\right)=\dot{r}\dot{\phi}\vec{e_\ph
 
 Combining [5] and [6] we get:
 
-$$\textbf{\vec{a}}=\left(\ddot{r}\vec{e_r}+\dot{r}\dot{\vec{e_r}}\right) + \left(\dot{r}\dot{\phi}\vec{e_\phi}+r\ddot{\phi}\vec{e_\phi}+r\dot{\phi}\dot{\vec{e_\phi}}\right)$$
+$$\mathbf{\vec{a}}=\left(\ddot{r}\vec{e_r}+\dot{r}\dot{\vec{e_r}}\right) + \left(\dot{r}\dot{\phi}\vec{e_\phi}+r\ddot{\phi}\vec{e_\phi}+r\dot{\phi}\dot{\vec{e_\phi}}\right)$$
 
 Substituting $\dot{\vec{e_r}}=\dot{\phi}$ and $\dot{\vec{e_\phi}}=-\dot{\phi}\vec{e_r}$:
 
-$$\textbf{\vec{a}}=\left(\ddot{r}\vec{e_r}+\dot{r}\dot{\phi}\vec{e_\phi}\right) + \left(\dot{r}\dot{\phi}\vec{e_\phi}+r\ddot{\phi}\vec{e_\phi}-r\dot{\phi}^2\vec{e_r}\right)$$
+$$\mathbf{\vec{a}}=\left(\ddot{r}\vec{e_r}+\dot{r}\dot{\phi}\vec{e_\phi}\right) + \left(\dot{r}\dot{\phi}\vec{e_\phi}+r\ddot{\phi}\vec{e_\phi}-r\dot{\phi}^2\vec{e_r}\right)$$
 
 Grouping the terms by $\vec{e_r}$ and $\vec{e_\phi}$ we finally get the acceleration vector:
 
-$$\textbf{\vec{a}}=\left(\ddot{r}-r\dot{\phi^2}\right)\vec{e_r} + \left(r\ddot{\phi}+2\dot{r}\dot{\phi}\right)\vec{e_\phi}$$
+$$\mathbf{\vec{a}}=\left(\ddot{r}-r\dot{\phi^2}\right)\vec{e_r} + \left(r\ddot{\phi}+2\dot{r}\dot{\phi}\right)\vec{e_\phi}$$
 
 So the radial component of the acceleration vector is:
 
@@ -198,11 +198,11 @@ Combining with [5] with [3]:
 
 $$a_r=\frac{h^2}{r^3} - \frac{3}{2}\frac{r_{s}h^2}{r^4} -r\left(\frac{h^2}{r^4}\right)=-\frac{3}{2}\frac{r_{s}h^2}{r^4}$$
 
-$a_r$ is the magnitude of the radial acceleration vector, and to get a vector, it must be multiplied by $\vec{e_r}=\textbf{\vec{r}}/r$:
+$a_r$ is the magnitude of the radial acceleration vector, and to get a vector, it must be multiplied by $\vec{e_r}=\mathbf{\vec{r}}/r$:
 
-$$\vec{\textbf{a_r}}=-\frac{3}{2}\frac{r_{s}h^2}{r^5}\textbf{\vec{r}}$$
+$$\vec{\mathbf{a_r}}=-\frac{3}{2}\frac{r_{s}h^2}{r^5}\mathbf{\vec{r}}$$
 
-This is a function of $r$ (since $h$ is constant) and it can be noticed that points in the opposite direction of $\vec{\textbf{r}}$ basically toward the center of the black hole.
+This is a function of $r$ (since $h$ is constant) and it can be noticed that points in the opposite direction of $\vec{\mathbf{r}}$ basically toward the center of the black hole.
 
 The HLSL code for this would be:
 ```
