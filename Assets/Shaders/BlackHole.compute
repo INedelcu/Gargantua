@@ -81,6 +81,10 @@ void CSMain (uint3 id : SV_DispatchThreadID)
 
     // Compute next position: x_1
     pos = prevPos + vel * kStepSize + 0.5f * GetAcceleration(pos, h2) * kStepSize * kStepSize;
+    
+    float transmission = 1.0f;
+    
+    float3 col = float3(0, 0, 0);
 
     // Calculate the trajectory of the photon around the black hole
     // Use basic Stormer-Verlet integration where the current acceleration depends on position only. https://en.wikipedia.org/wiki/Verlet_integration#Basic_St%C3%B8rmer%E2%80%93Verlet
@@ -92,7 +96,7 @@ void CSMain (uint3 id : SV_DispatchThreadID)
         // Photon crossed the event horizon
         if (r2 < kRs * kRs)
         {
-            g_Output[launchIndex] = float4(0, 0, 0, 1);
+            g_Output[launchIndex] = float4(col, 1);
             return;
         }
         
@@ -118,9 +122,10 @@ void CSMain (uint3 id : SV_DispatchThreadID)
                 {
                      // Normalize u between 0.0 (kAccretionStart) and 1.0 (kAccretionEnd)
                     float u = (hitDist - kAccretionStart) / (kAccretionEnd - kAccretionStart);
-                    float3 diskColor = g_AccretionDiskGradient.SampleLevel(my_point_clamp_sampler, float2(u, 0), 0).rgb;
-                    g_Output[launchIndex] = float4(diskColor, 1);
-                    return;
+                    float4 diskColor = g_AccretionDiskGradient.SampleLevel(my_point_clamp_sampler, float2(u, 0), 0);
+                    float transparency = diskColor.a;
+                    col += diskColor.rgb * transparency * transmission;
+                    transmission *= (1 - transparency);
                 }
             }
         }
@@ -133,8 +138,8 @@ void CSMain (uint3 id : SV_DispatchThreadID)
         pos = nextPos;
     }
    
-    float3 spaceTexColor = g_EnvTex.SampleLevel(sampler_g_EnvTex, normalize(pos - prevPos), 0).rgb;
+    col += g_EnvTex.SampleLevel(sampler_g_EnvTex, normalize(pos - prevPos), 0).rgb * transmission;
      
-    g_Output[launchIndex] = float4(spaceTexColor.xyz, 1);
+    g_Output[launchIndex] = float4(col, 1);
 
 }

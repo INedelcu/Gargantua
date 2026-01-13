@@ -65,10 +65,16 @@ public class BlackHole : MonoBehaviour
             for (int i = 0; i < pixels.Length; i++)
             {
                 float t = (float)i / (float)(pixels.Length - 1);
-                float r = 1.0f;
-                float g = 0.8f * Mathf.Exp(-2.0f * t);
-                float b = 0.2f * Mathf.Exp(-5.0f * t);
-                float a = 1.0f;
+                float r = 3.5f;
+                float g = 2.8f * Mathf.Exp(-2.0f * t);
+                float b = 2.4f * Mathf.Exp(-5.0f * t);
+
+                // Alpha gradient
+                // Increase alpha sharply from 0 outwards
+                float a = 1 - Mathf.Exp(-30.0f * t);
+
+                // Decrease alpha smoothly from 0.2 to 1.0
+                a *= 1 - Mathf.SmoothStep(0.2f, 1, t);
 
                 pixels[i] = new Color(r, g, b, a);
             }
