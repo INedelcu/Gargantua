@@ -219,7 +219,7 @@ The HLSL code for this would be:
        return pos * (-1.5 * kRs * h2 / r5);
     }
 
-    // For computing the path, since the acceleration depends on positon only we can use Størmer–Verlet integration    
+    // For computing the path, since the acceleration depends on positon only we can use Stormer-Verlet integration
     // Assume the initial ray direction in world space is called rayDirection
     // The origin is actually the camera position
     // Initial position and velocity: x_0
