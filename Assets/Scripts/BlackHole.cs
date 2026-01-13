@@ -9,6 +9,8 @@ public class BlackHole : MonoBehaviour
 
     public Cubemap envSpaceTexture = null;
 
+    public Texture2D accretionDiskTexture = null;
+
     private RenderTexture output = null;
 
     private Texture2D accretionDiskGradient = null;
@@ -58,7 +60,7 @@ public class BlackHole : MonoBehaviour
 
         if (accretionDiskGradient == null)
         {
-            const uint size = 16;
+            const uint size = 256;
             accretionDiskGradient = new Texture2D((int)size, 1, TextureFormat.RGBAFloat, false);
             accretionDiskGradient.hideFlags = HideFlags.HideAndDontSave;
             Color[] pixels = new Color[size];
@@ -109,10 +111,13 @@ public class BlackHole : MonoBehaviour
         shader.SetFloat(Shader.PropertyToID("g_Zoom"), Mathf.Tan(Mathf.Deg2Rad * Camera.main.fieldOfView * 0.5f));
         shader.SetFloat(Shader.PropertyToID("g_AspectRatio"), cameraWidth / (float)cameraHeight);
 
+        shader.SetFloat(Shader.PropertyToID("g_Time"), Time.realtimeSinceStartup);
+
         shader.SetVector(Shader.PropertyToID("g_CameraPos"), Camera.main.transform.position);
 
         shader.SetTexture(kernelIndex, Shader.PropertyToID("g_EnvTex"), envSpaceTexture);
 
+        shader.SetTexture(kernelIndex, Shader.PropertyToID("g_AccretionDiskTex"), accretionDiskTexture);
         shader.SetTexture(kernelIndex, Shader.PropertyToID("g_AccretionDiskGradient"), accretionDiskGradient);
 
         // Output

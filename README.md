@@ -266,3 +266,8 @@ The HLSL code for this would be:
 
 <img src="https://github.com/INedelcu/Gargantua/blob/main/Images/7.png?raw=true" width="1280">
 
+<img src="https://github.com/INedelcu/Gargantua/blob/main/Images/8.png?raw=true" width="1280">
+
+<img src="https://github.com/INedelcu/Gargantua/blob/main/Images/9.png?raw=true" width="1280">
+
+<img src="https://github.com/INedelcu/Gargantua/blob/main/Images/10.png?raw=true" width="1280">

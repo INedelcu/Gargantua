@@ -7,10 +7,14 @@ TextureCube<float4> g_EnvTex;
 SamplerState sampler_g_EnvTex;
 
 Texture2D<float4> g_AccretionDiskGradient;
-SamplerState my_point_clamp_sampler;
+SamplerState my_linear_clamp_sampler;
+
+Texture2D<float3> g_AccretionDiskTex;
+SamplerState sampler_g_AccretionDiskTex;
 
 float g_Zoom;
 float g_AspectRatio;
+float g_Time;
 
 uint g_CameraResX;
 uint g_CameraResY;
@@ -37,6 +41,8 @@ static int kMaxSteps = 300;
 // In this simulation, the accretion disk is "artificially" generated for art purposes only and for better observing the gravitational lens effect.
 static float kAccretionStart = 20.0;
 static float kAccretionEnd = 70.0;
+
+#define PI 3.141592653f
 
 float3 GetAcceleration(float3 pos, float h2)
 {
@@ -66,19 +72,31 @@ void SampleAccretionDisk(float3 pos, float3 prevPos, inout float3 color, inout f
     float3 hitPoint = prevPos + (pos - prevPos) * t;
     float hitDist = length(hitPoint);
 
-    // Check if the intersection is inside the accretion disk bounds
+    // Check if the intersection is outside the accretion disk bounds
     if (hitDist < kAccretionStart || hitDist > kAccretionEnd)
         return;
    
-   // Normalize u between 0.0 (kAccretionStart) and 1.0 (kAccretionEnd)
-   float u = (hitDist - kAccretionStart) / (kAccretionEnd - kAccretionStart);
+    // Get a radial v coordinate. Map v between 0.0 (kAccretionStart) and 1.0 (kAccretionEnd)
+    float v = (hitDist - kAccretionStart) / (kAccretionEnd - kAccretionStart);
     
-   float4 diskColor = g_AccretionDiskGradient.SampleLevel(my_point_clamp_sampler, float2(u, 0), 0);
+    float4 diskColorGradient = g_AccretionDiskGradient.SampleLevel(my_linear_clamp_sampler, float2(v, 0), 0);
     
-   float transparency = diskColor.a;
+    // Get an u coordinate between 0 and 1 from the azimuthal angle of the Schwarzschild coords -PI < phi < PI
+    float u = 0.5 * (1 + atan2(hitPoint.z, hitPoint.x) / PI);
+    
+    // Apply a swirl effect to u depending on v (more swirl closer to the event horizon because the matter speed is higher)
+    float2 uv = float2(g_Time * 0.1 + u * 2 + (1 - v) * (1 - v) * (1 - v), v);
+    float3 acreetionTex = g_AccretionDiskTex.SampleLevel(sampler_g_AccretionDiskTex, uv, 0);
+    
+    acreetionTex.rgb *= diskColorGradient.rgb;
 
-   color += diskColor.rgb * transparency * transmission;
-   transmission *= (1 - transparency);
+    float alpha = diskColorGradient.a;
+    alpha *= dot(float3(0.299f, 0.587f, 0.114f), acreetionTex);
+    
+    float transparency = saturate(alpha);
+
+    color += acreetionTex.rgb * transparency * transmission;
+    transmission *= (1 - transparency);
 }
 
 [numthreads(8, 8, 1)]
