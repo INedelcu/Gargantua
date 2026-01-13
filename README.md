@@ -248,7 +248,7 @@ The HLSL code for this would be:
     }
 ```
 
-##Development progress screenshots:
+## Development progress screenshots:
 
 <img src="https://github.com/INedelcu/Gargantua/blob/main/Images/1.png?raw=true" width="1280">
 
