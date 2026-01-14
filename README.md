@@ -160,7 +160,7 @@ To summarize:
 
 $$\dot{\vec{e_r}}=\dot{\phi}\vec{e_\phi} \ \ \text{and}\ \  \dot{\vec{e_\phi}}=-\dot{\phi}\vec{e_r}$$ 
 
-To obtain the velocity vector, one need to take the derivative of the position vector $\mathbf{\vec{r}}=r\vec{e_r}$:
+[To obtain the velocity vector](https://youtu.be/Qu8gp8g5jJ0?t=287), one need to take the derivative of the position vector $\mathbf{\vec{r}}=r\vec{e_r}$:
 
 $$\mathbf{\vec{v}}=\frac{d\mathbf{\vec{r}}}{dt}=\frac{d}{dt}\left(r\vec{e_r}\right)=\dot{r}\vec{e_r} + r\dot{\vec{e_r}}$$
 
@@ -168,7 +168,7 @@ Since $\dot{\vec{e_r}}=\dot{\phi}\vec{e_\phi}$:
 
 $$\mathbf{\vec{v}}=\dot{r}\vec{e_r}+r\dot{\phi}\vec{e_{\phi}}$$
 
-To obtain the acceleration vector, we differentiate $\mathbf{v}$ with respect of time:
+[To obtain the acceleration vector](https://www.youtube.com/watch?v=YA2e4-Bv6Wc), we differentiate $\mathbf{\vec{v}}$ with respect of time:
 
 $$\mathbf{\vec{a}}=\frac{d\mathbf{\vec{v}}}{dt}=\frac{d}{dt}\left(\dot{r}\vec{e_r}+r\dot{\phi}\vec{e_{\phi}}\right)$$
 
