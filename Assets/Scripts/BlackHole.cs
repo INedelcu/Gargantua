@@ -11,6 +11,10 @@ public class BlackHole : MonoBehaviour
 
     public Texture2D accretionDiskTexture = null;
 
+    public Texture2D millersPlanetTexture = null;
+
+    public GameObject millersPlanet = null;
+
     private RenderTexture output = null;
 
     private Texture2D accretionDiskGradient = null;
@@ -119,6 +123,9 @@ public class BlackHole : MonoBehaviour
 
         shader.SetTexture(kernelIndex, Shader.PropertyToID("g_AccretionDiskTex"), accretionDiskTexture);
         shader.SetTexture(kernelIndex, Shader.PropertyToID("g_AccretionDiskGradient"), accretionDiskGradient);
+
+        shader.SetVector(Shader.PropertyToID("g_PlanetPosition"), millersPlanet.transform.position);
+        shader.SetTexture(kernelIndex, Shader.PropertyToID("g_PlanetTex"), millersPlanetTexture);
 
         // Output
         shader.SetTexture(kernelIndex, Shader.PropertyToID("g_Output"), output);
