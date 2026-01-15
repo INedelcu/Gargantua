@@ -141,7 +141,7 @@ $$\mathbf{\vec{r}} = r\vec{e_r}$$
 <img src="https://github.com/INedelcu/Gargantua/blob/main/Images/spherical_coordinates_xy.png?raw=true"  alt="A spherical coordinates"  width="300"  height="300">
 </p>
 
-Because the particle moves, the angle $\vec{e_\phi}$ changes with time. This means that $\vec{e_r}$ and $\vec{e_\phi}$ are not constant since they change their direction. In Cartesian coordinates [they are](https://youtu.be/_BuyCwdCxAc?si=XzhAFWh1CEIJUaHd):
+Because the particle moves, the angle $\phi$ changes with time. This means that $\vec{e_r}$ and $\vec{e_\phi}$ are not constant since they change their direction. In Cartesian coordinates [they are](https://youtu.be/_BuyCwdCxAc?si=XzhAFWh1CEIJUaHd):
 
 $$\vec{e_r}=\vec{x}\cos{\phi} + \vec{y}\sin{\phi}$$ 
 
