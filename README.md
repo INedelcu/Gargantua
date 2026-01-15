@@ -1,4 +1,5 @@
 
+
 # Gargantua
 ## A black hole simulation and rendering project in Unity
 
@@ -23,7 +24,7 @@ First, **EFE** is an equation (or system of 10 equations) that describe the [geo
 
 The **Schwarzschild metric** (a.k.a the **Schwarzschild solution**) is an exact solution to the **EFE** that describes the [gravitational field](https://en.wikipedia.org/wiki/Gravitational_field "Gravitational field") outside a spherical mass, on the assumption that the [electric charge](https://en.wikipedia.org/wiki/Electric_charge "Electric charge") of the mass, [angular momentum](https://en.wikipedia.org/wiki/Angular_momentum "Angular momentum") of the mass, and universal [cosmological constant](https://en.wikipedia.org/wiki/Cosmological_constant "Cosmological constant") are all zero. The solution is a useful approximation for describing slowly rotating astronomical objects such as many stars including Earth and the Sun and also (what's the most important in this project) black holes. 
 
-There are more complex solutions for other types of black holes that take into account the rotation of the black hole and the electric charge(?) for example: [Kerr black holes](https://en.wikipedia.org/wiki/Kerr_metric) similar which are similar to to Schwarzschild but have rotation, or [Kerr–Nnewman](https://en.wikipedia.org/wiki/Kerr%E2%80%93Newman_metric) that have both rotation and changes. Looking at the equations of particle motion for the rotating black holes, I see a lot of [trigonometric functions](https://en.wikipedia.org/wiki/Kerr%E2%80%93Newman_metric#Equations_of_motion) and I believe it's a good idea to stick witch the simplest one which is the Schwarzschild solution for now.
+There are more complex solutions for other types of black holes that take into account the rotation of the black hole and the electric charge(?) for example: [Kerr black holes](https://en.wikipedia.org/wiki/Kerr_metric) which are similar to to Schwarzschild but have rotation, or [Kerr–Nnewman](https://en.wikipedia.org/wiki/Kerr%E2%80%93Newman_metric) that have both rotation and changes. Looking at the equations of particle motion for the rotating black holes, I see a lot of [trigonometric functions](https://en.wikipedia.org/wiki/Kerr%E2%80%93Newman_metric#Equations_of_motion) and I believe it's a good idea to stick witch the simplest one which is the Schwarzschild solution for now.
 
 A **Schwarzschild black hole** or **static black hole** is a  black hole that has neither electric charge nor angular momentum (non-rotating). A Schwarzschild black hole is described by the Schwarzschild metric, and cannot be distinguished from any other Schwarzschild black hole except by its mass.
 
@@ -56,19 +57,19 @@ Where:
 
 These coordinates are used for the exterior of the black hole only. For both the exterior and interior of the black hole there are other types of coordinates e.g. [Kruskal–Szekeres](https://en.wikipedia.org/wiki/Kruskal%E2%80%93Szekeres_coordinates) but we will not dive into the black hole for this simulation :grin:.
 
-[**Schwarzschild geodesics**](https://en.wikipedia.org/wiki/Schwarzschild_geodesics) describe the motion of test particles in the [gravitational field](https://en.wikipedia.org/wiki/Gravitational_field) of a central fixed mass $M$, that is, motion in the Schwarzschild metric. Photons travel along paths called [null geodesic](https://physics.stackexchange.com/questions/188859/what-is-a-null-geodesic) meaning that $ds^2=0$.
+[**Schwarzschild geodesics**](https://en.wikipedia.org/wiki/Schwarzschild_geodesics) describe the motion of test particles in the [gravitational field](https://en.wikipedia.org/wiki/Gravitational_field) of a central fixed mass $M$, that is, motion in the Schwarzschild metric. Photons travel along paths called [null geodesic](https://physics.stackexchange.com/questions/188859/what-is-a-null-geodesic) meaning that $ds^2=0$ where proper time $\tau$ is 0 (the time doesn't "tick" for a photon on its geodesic).
 
 Since the spacetime metric around Schwarzschild black hole is symmetric about $\theta = \frac{\pi}{2}$, any geodesic that begins moving in that plane will remain in that plane indefinitely. Therefore, we orient the coordinate system so that the orbit of the particle lies in that plane and fix the $\theta$ coordinate to be $\frac {\pi }{2}$ ($\,d\theta=0$ and $\sin\theta=1$) so that the metric (of this plane) simplifies to:
 
 $$0=c^2 d \tau^{2} = \left (1 - \frac{r_s}{r} \right) c^2 dt^2 - \left(1-\frac{r_s}{r}\right)^{-1} dr^2 - r^2 d\phi^2$$
 
-We are going to use [Newton notation](https://en.wikipedia.org/wiki/Notation_for_differentiation#Newton's_notation) for differentiation of quantities. Thus, $\dot{r}$ instead of $dr$, which means the derivative of $r$(position) with respect to $t$ which is simply the velocity. Also in physics one can use [natural units](https://en.wikipedia.org/wiki/Natural_units) ($G=c=1$) for simplification.
+We are going to use [Newton notation](https://en.wikipedia.org/wiki/Notation_for_differentiation#Newton's_notation) for differentiation of quantities. Thus, $\dot{r}$ instead of $dr$, which means the derivative of $r$ (position) with respect to $t$ (time) which is simply the velocity. Also, in physics one can use [natural units](https://en.wikipedia.org/wiki/Natural_units) ($G=c=1$) for simplification.
 
 With this in mind, the metric becomes:
 
 $$0=-\left (1 - \frac{2M}{r} \right) \dot t^2 + \left(1-\frac{2M}{r}\right)^{-1} \dot r^2 + r^2 \dot{\phi}^2 [1]$$
 
-There are [2 constants of motion](https://en.wikipedia.org/wiki/Schwarzschild_geodesics#Orbits_of_test_particles) caused by the time independence and symmetry (the black hole doesn't change over time and is spherically symmetric):
+There are [2 constants of motion](https://en.wikipedia.org/wiki/Schwarzschild_geodesics#Orbits_of_test_particles) caused by the time independence and symmetry (the black hole doesn't change over time, doesn't move, and is spherically symmetric):
 1. Energy ($E$) which is associated with time translation symmetry (the metric components don't depend on time coordinate):
 
 $$\left (1 - \frac{2M}{r} \right) \dot t = E \Rightarrow \dot t=\frac{E}{1-\frac{2M}{r}}[2]$$
@@ -77,7 +78,7 @@ $$\left (1 - \frac{2M}{r} \right) \dot t = E \Rightarrow \dot t=\frac{E}{1-\frac
 
 $$h=\|r \times v\|=r^2 \dot{\phi} \Rightarrow  \dot{\phi}=\frac{h}{r^2}[3]$$
 
-*Here the dot represents differentiation with respect to an affine parameter $\lambda$ since proper time $\tau$ is zero for light (i.e. $\dot t = \frac{dt}{d\lambda}$ and $\dot{\phi} = \frac{d\phi}{d\lambda}$ 
+*Here the dot represents differentiation with respect to an affine parameter $\lambda$ since proper time $\tau$ is zero for light (i.e. $\dot t = \frac{dt}{d\lambda}$ and $\dot{\phi} = \frac{d\phi}{d\lambda}$) 
 
 Substituting the formulas for $\dot t$ [1] and $\dot{\phi}$ [2] into the null geodesic equation [1], we get:
 
@@ -109,7 +110,7 @@ Since $E$ is a constant, the right side of the equation is 0.
 
 To differentiate $V_{eff}(r)$ we have to use the [chain rule](https://en.wikipedia.org/wiki/Chain_rule) since the function is of variable $r$ but we differentiate with respect to $\lambda$ :
 
-$$\frac{d}{d\lambda}V_{eff}(r)=\frac{dV_{eff}}{dr} \dot{r}$$
+$$\frac{d}{d\lambda}V_{eff}(r)=\frac{dV_{eff}}{dr}\frac{dr}{d\lambda}=\frac{dV_{eff}}{dr} \dot{r}$$
 
 Finally, we get:
 
@@ -127,7 +128,7 @@ And $\ddot{r}$ is finally (using $r_{s}=2M$ as [geometrized units](https://en.wi
 
 $$\ddot{r}=\frac{h^2}{r^3} - \frac{3}{2}\frac{r_{s}h^2}{r^4}[5]$$
 
-$\ddot{r}$ which is linear acceleration of the radial coordinate $r$ (a scalar) but to actually use it, we would need an acceleration in Cartesian coordinates $\vec{a}=(\ddot{x},\ddot{y}, \ddot{z}).$ Since we fixes $\theta = \frac{\pi}{2}$ earlier because of the rotational symmetry, it means that we can derive the velocity vector in the XY plane and by differentiating it, we get the radial acceleration vector (imagine the photon is attracted to the center of the black hole).
+$\ddot{r}$ which is the linear acceleration of the radial coordinate $r$ (a scalar) but to actually use it, we would need an acceleration in Cartesian coordinates $\vec{a}=(\ddot{x},\ddot{y}, \ddot{z}).$ Since we fixes $\theta = \frac{\pi}{2}$ earlier because of the rotational symmetry, it means that we can derive the velocity vector in the XY plane and by differentiating it, we get the radial acceleration vector (imagine the photon is attracted to the center of the black hole).
 
 In polar coordinates, the position of a particle is defined by $r$ the radial coordinate and the angle $\phi$ (in the XY plane) which is the rotation around the Z axis.
 
@@ -195,6 +196,8 @@ $$\mathbf{\vec{a}}=\left(\ddot{r}-r\dot{\phi^2}\right)\vec{e_r} + \left(r\ddot{\
 So the radial component of the acceleration vector is:
 
 $$a_r=\ddot{r}-r\dot{\phi}^2$$
+
+Note that, since the gravitation of the black hole acts like a central force, it only acts in the radial direction (towards the singularity), thus the acceleration doesn't have a tangential component (the factor of $\vec{e_\phi}$ must be zero).
 
 Combining with [5] with [3]:
 
@@ -271,5 +274,3 @@ The HLSL code for this would be:
 <img src="https://github.com/INedelcu/Gargantua/blob/main/Images/9.png?raw=true" width="1280">
 
 <img src="https://github.com/INedelcu/Gargantua/blob/main/Images/10.png?raw=true" width="1280">
-
-<img src="https://github.com/INedelcu/Gargantua/blob/main/Images/11.png?raw=true" width="1280">
