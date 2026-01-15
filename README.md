@@ -39,7 +39,7 @@ Spherical coordinate system:
 <img src="https://github.com/INedelcu/Gargantua/blob/main/Images/spherical_coordinates.png?raw=true"  alt="A spherical coordinates"  width="300"  height="300">
 </p>
 
-Schwarzschild coordinates:
+Schwarzschild metric:
 
 $${d s}^{2} = c^2 d \tau^{2} = \left (1 - \frac{r_s}{r} \right) c^2 dt^2 - \left(1-\frac{r_s}{r}\right)^{-1} dr^2 - r^2 {d \Omega}^{2}$$
 
