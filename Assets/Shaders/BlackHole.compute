@@ -145,7 +145,7 @@ void SampleMillersPlanet(float3 pos, float3 prevPos, inout float3 color, inout f
     if (t == -1)
         return;
     
-    float3 worldSpacePos = pos + rayDir * t;
+    float3 worldSpacePos = prevPos + rayDir * t;
     float3 localSpacePos = worldSpacePos - g_PlanetPosition;
     float3 normal = normalize(localSpacePos);
             
