@@ -138,7 +138,7 @@ void SampleMillersPlanet(float3 pos, float3 prevPos, inout float3 color, inout f
     float rayDirLength = length(rayDir);
  
     // Quick test
-    if (dot(pos - g_PlanetPosition, pos - g_PlanetPosition) > kPlanetSize * kPlanetSize + rayDirLength)
+    if (dot(pos - g_PlanetPosition, pos - g_PlanetPosition) > (kPlanetSize + rayDirLength) * (kPlanetSize + rayDirLength))
         return;
 
     rayDir = rayDir / rayDirLength;
