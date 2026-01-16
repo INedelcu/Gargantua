@@ -134,11 +134,14 @@ void SampleAccretionDisk(float3 pos, float3 prevPos, inout float3 color, inout f
 
 void SampleMillersPlanet(float3 pos, float3 prevPos, inout float3 color, inout float transmission)
 {
+    float3 rayDir = pos - prevPos;
+    float rayDirLength = length(rayDir);
+ 
     // Quick test
-    if (dot(g_PlanetPosition - pos, g_PlanetPosition - pos) > kPlanetSize * kPlanetSize)
+    if (dot(pos - g_PlanetPosition, pos - g_PlanetPosition) > kPlanetSize * kPlanetSize + rayDirLength)
         return;
-        
-    float3 rayDir = normalize(pos - prevPos);
+
+    rayDir = rayDir / rayDirLength;
         
     float t = RaySphereIntersect(prevPos, rayDir, g_PlanetPosition, kPlanetSize);
 
