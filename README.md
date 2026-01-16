@@ -3,6 +3,8 @@
 # Gargantua
 ## A black hole simulation and rendering project in Unity
 
+<img src="https://github.com/INedelcu/Gargantua/blob/main/Images/10.png?raw=true" width="1280">
+
 ### What is a black hole?
 ###### *The text bellow is heavily inspired from Wikipedia. Some large portions of text including formulas are copy pasted here.
 A black hole is a region in space with gravity so intense that nothing, not even light, can escape it, formed from the collapsed core of a massive star or other processes, containing immense mass in a tiny volume, defined by a boundary called the "event horizon" where escape becomes impossible.
