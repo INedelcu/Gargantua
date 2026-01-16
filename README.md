@@ -253,6 +253,9 @@ The HLSL code for this would be:
     }
 ```
 
+## How to interact with the scene
+
+When in Play Mode, hold right mouse button down and use WASD keys to navigate through the scene.
 
 ## Development progress screenshots:
 
