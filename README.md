@@ -287,6 +287,7 @@ When in Play Mode, hold right mouse button down and use WASD keys to navigate th
  - Generate the accretion disk by ray marching a 3D volume instead of a simple plane
  - "Far plane" is very close to the camera now because of the limited ray marching steps
  - Use the Kerr solution for rotating black holes. It's a lot of trigonometry but leads to interesting effects
+ - Use a much higher even horizon radius. A very small black hole should have at least a 10 km radius. The black hole is this project has a radius of 10 meters :joy:
  - Generate the redshift and blueshift of the accretion disk around the BH. This occurs due to the Doppler effect (motion) and gravitational redshift (gravity)
  - Simulate time dilation and spawn some wall clocks in the scene to see how gravitation influences how fast the clocks tick ("This little maneuver is gonna cost us 51 years"). Assume we can see the observer's clock on the UI and can navigate to each spawned clock.
  
