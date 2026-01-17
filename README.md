@@ -130,9 +130,9 @@ And $\ddot{r}$ is finally (using $r_{s}=2M$ as [geometrized units](https://en.wi
 
 $$\ddot{r}=\frac{h^2}{r^3} - \frac{3}{2}\frac{r_{s}h^2}{r^4}[5]$$
 
-$\ddot{r}$ which is the linear acceleration of the radial coordinate $r$ (a scalar) but to actually use it, we would need an acceleration in Cartesian coordinates $\vec{a}=(\ddot{x},\ddot{y}, \ddot{z}).$ Since we fixed $\theta = \frac{\pi}{2}$ earlier because of the rotational symmetry, it means that we can derive the velocity vector in the XY plane and by differentiating it, we get the radial acceleration vector (imagine the photon is attracted to the center of the black hole).
+$\ddot{r}$ which is the linear acceleration of the radial coordinate $r$ (a scalar) but to actually use it, we would need an acceleration in Cartesian coordinates $\vec{a}=(\ddot{x},\ddot{y}, \ddot{z}).$ Since we fixed $\theta = \frac{\pi}{2}$ earlier because of the rotational symmetry, it means that we can derive the velocity vector in the $x-y$ plane and by differentiating it, we get the radial acceleration vector (imagine the photon is attracted to the center of the black hole).
 
-In polar coordinates, the position of a particle is defined by $r$ the radial coordinate and the angle $\phi$ (in the $xy$ plane) which is the rotation around the $z$ axis.
+In polar coordinates, the position of a particle is defined by $r$ the radial coordinate and the angle $\phi$ (in the $x-y$ plane) which is the rotation around the $z$ axis.
 
 $$\mathbf{\vec{r}} = r\vec{e_r}$$
 
