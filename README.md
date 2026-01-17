@@ -61,7 +61,7 @@ These coordinates are used for the exterior of the black hole only. For both the
 
 [**Schwarzschild geodesics**](https://en.wikipedia.org/wiki/Schwarzschild_geodesics) describe the motion of test particles in the [gravitational field](https://en.wikipedia.org/wiki/Gravitational_field) of a central fixed mass $M$, that is, motion in the Schwarzschild metric. Photons travel along paths called [null geodesic](https://physics.stackexchange.com/questions/188859/what-is-a-null-geodesic) meaning that $ds^2=0$ where proper time $\tau$ is 0 (the time doesn't "tick" for a photon on its geodesic).
 
-Since the spacetime metric around Schwarzschild black hole is symmetric about $\theta = \frac{\pi}{2}$, any geodesic that begins moving in that plane will remain in that plane indefinitely. Therefore, we orient the coordinate system so that the orbit of the particle lies in that plane and fix the $\theta$ coordinate to be $\frac {\pi }{2}$ ($\,d\theta=0$ and $\sin\theta=1$) so that the metric (of this plane) simplifies to:
+Since the spacetime metric around Schwarzschild black hole is symmetric about $\theta = \frac{\pi}{2}$, any geodesic that begins moving in that plane will remain in that plane indefinitely. Therefore, we orient the coordinate system so that the orbit of the particle lies in that plane and fix the $\theta$ coordinate to be $\frac {\pi }{2}$ ($d\theta=0$ and $\sin\theta=1$) so that the metric (of this plane) simplifies to:
 
 $$0=c^2 d \tau^{2} = \left (1 - \frac{r_s}{r} \right) c^2 dt^2 - \left(1-\frac{r_s}{r}\right)^{-1} dr^2 - r^2 d\phi^2$$
 
@@ -82,7 +82,7 @@ $$h=\|r \times v\|=r^2 \dot{\phi} \Rightarrow  \dot{\phi}=\frac{h}{r^2}[3]$$
 
 *Here the dot represents differentiation with respect to an affine parameter $\lambda$ since proper time $\tau$ is zero for light (i.e. $\dot t = \frac{dt}{d\lambda}$ and $\dot{\phi} = \frac{d\phi}{d\lambda}$) 
 
-Substituting the formulas for $\dot t$ [1] and $\dot{\phi}$ [2] into the null geodesic equation [1], we get:
+Substituting the formulas for $\dot t$ [2] and $\dot{\phi}$ [3] into the null geodesic equation [1], we get:
 
 $$0=-\left(1-\frac{2M}{r}\right)\left[\frac{E}{1-\frac{2M}{r}}\right]^2 + \left(1-\frac{2M}
 {r}\right)^{-1}\dot{r}^{2}+r^{2}\left[\frac{h}{r^2}\right]^2$$
@@ -130,9 +130,9 @@ And $\ddot{r}$ is finally (using $r_{s}=2M$ as [geometrized units](https://en.wi
 
 $$\ddot{r}=\frac{h^2}{r^3} - \frac{3}{2}\frac{r_{s}h^2}{r^4}[5]$$
 
-$\ddot{r}$ which is the linear acceleration of the radial coordinate $r$ (a scalar) but to actually use it, we would need an acceleration in Cartesian coordinates $\vec{a}=(\ddot{x},\ddot{y}, \ddot{z}).$ Since we fixes $\theta = \frac{\pi}{2}$ earlier because of the rotational symmetry, it means that we can derive the velocity vector in the XY plane and by differentiating it, we get the radial acceleration vector (imagine the photon is attracted to the center of the black hole).
+$\ddot{r}$ which is the linear acceleration of the radial coordinate $r$ (a scalar) but to actually use it, we would need an acceleration in Cartesian coordinates $\vec{a}=(\ddot{x},\ddot{y}, \ddot{z}).$ Since we fixed $\theta = \frac{\pi}{2}$ earlier because of the rotational symmetry, it means that we can derive the velocity vector in the XY plane and by differentiating it, we get the radial acceleration vector (imagine the photon is attracted to the center of the black hole).
 
-In polar coordinates, the position of a particle is defined by $r$ the radial coordinate and the angle $\phi$ (in the XY plane) which is the rotation around the Z axis.
+In polar coordinates, the position of a particle is defined by $r$ the radial coordinate and the angle $\phi$ (in the $xy$ plane) which is the rotation around the $z$ axis.
 
 $$\mathbf{\vec{r}} = r\vec{e_r}$$
 
@@ -285,9 +285,9 @@ When in Play Mode, hold right mouse button down and use WASD keys to navigate th
 ## Possible future improvements:
 
  - Generate the accretion disk by ray marching a 3D volume instead of a simple plane
- - "Far plane" is very close to the camera now because of the limited ray marching steps
+ - The "far plane" is very close to the camera now because of the limited ray marching steps
  - Use the Kerr solution for rotating black holes. It's a lot of trigonometry but leads to interesting effects
- - Use a much higher even horizon radius. A very small black hole should have at least a 10 km radius. The black hole is this project has a radius of 10 meters :joy:
+ - Use a much higher even horizon radius. A very small black hole should have at least a 10 km radius. The black hole in this project has a radius of 10 meters :joy:
  - Generate the redshift and blueshift of the accretion disk around the BH. This occurs due to the Doppler effect (motion) and gravitational redshift (gravity)
  - Simulate time dilation and spawn some wall clocks in the scene to see how gravitation influences how fast the clocks tick ("This little maneuver is gonna cost us 51 years"). Assume we can see the observer's clock on the UI and can navigate to each spawned clock.
  
