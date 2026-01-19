@@ -124,6 +124,8 @@ public class BlackHole : MonoBehaviour
         shader.SetTexture(kernelIndex, Shader.PropertyToID("g_AccretionDiskTex"), accretionDiskTexture);
         shader.SetTexture(kernelIndex, Shader.PropertyToID("g_AccretionDiskGradient"), accretionDiskGradient);
 
+        shader.SetFloat(Shader.PropertyToID("g_AccretionDiskSpeed"), Time.realtimeSinceStartup * 0.1f);
+
         shader.SetVector(Shader.PropertyToID("g_PlanetPosition"), millersPlanet.transform.position);
         shader.SetTexture(kernelIndex, Shader.PropertyToID("g_PlanetTex"), millersPlanetTexture);
 
