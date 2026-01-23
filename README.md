@@ -213,6 +213,8 @@ This is a function of $r$ (since $h$ is constant) and it can be noticed that poi
 
 The HLSL code for this would be:
 ```
+    #define kRs 50.0
+	
     // These should depend on the Rs actually
     #define kStepSize 0.2
     #define kMaxSteps 1000
@@ -243,7 +245,14 @@ The HLSL code for this would be:
     // Calculate the trajectory of the photon around the black hole
     // https://en.wikipedia.org/wiki/Verlet_integration#Basic_St%C3%B8rmer%E2%80%93Verlet
     for (int i = 0; i < kMaxSteps; i++)
-    {
+    { 
+        // Check to see if pos is inside the event horizon
+        if (dot(pos, pos) < kRs * kRs)
+        {
+            // Stop the integration. We can just return black.
+            return;
+        }
+
         // Compute x_(n+1)
         float3 nextPos = 2 * pos - prevPos + GetAcceleration(pos, h2) * kStepSize * kStepSize;
 		
@@ -251,6 +260,8 @@ The HLSL code for this would be:
                 
         pos = nextPos;
     }
+
+    // Sample the environment cubemap using (pos - prevPos) vector
 ```
 
 ## How to interact with the scene
@@ -287,7 +298,7 @@ When in Play Mode, hold right mouse button down and use WASD keys to navigate th
  - Generate the accretion disk by ray marching a 3D volume instead of a simple plane
  - The "far plane" is very close to the camera now because of the limited ray marching steps
  - Use the Kerr solution for rotating black holes. It's a lot of trigonometry but leads to interesting effects
- - Use a much higher even horizon radius. A very small black hole should have at least a 10 km radius. The black hole in this project has a radius of 10 meters :joy:
+ - Use a much higher event horizon radius. A very small black hole should have at least a 10 km radius. The black hole in this project has a radius of 10 meters :joy:
  - Generate the redshift and blueshift of the accretion disk around the BH. This occurs due to the Doppler effect (motion) and gravitational redshift (gravity)
  - Simulate time dilation and spawn some wall clocks in the scene to see how gravitation influences how fast the clocks tick ("This little maneuver is gonna cost us 51 years"). Assume we can see the observer's clock on the UI and can navigate to each spawned clock.
  
