@@ -24,7 +24,7 @@ float3 g_CameraPos;
 
 // Miller's Planet is outside the accretion disk 
 float3 g_PlanetPosition;
-static float kPlanetSize = 1.0f;
+#define kPlanetSize 1.0f
 
 Texture2D<float3> g_PlanetTex;
 
@@ -38,16 +38,16 @@ float4x4 unity_CameraToWorld;
 
 // For non-rotating black holes, the Schwarzschild radius and the event horizon are the same (Rs = 2*G*M/c^2)
 // For Earth this would be 9 mm and for the biggest known black holes this is 194 billion km.
-static float kRs = 10.0;
+#define kRs 10.0f
 
 // The larger the kRs, the larger kMaxSteps or kStepSize should be
 // kStepSize is the integration step (dt)
-static float kStepSize = 0.5;
-static uint kMaxSteps = 300;
+#define kStepSize 0.5f
+#define kMaxSteps 300
 
 // In this simulation, the accretion disk is "artificially" generated for art purposes only and for better observing the gravitational lens effect.
-static float kAccretionStart = 20.0;
-static float kAccretionEnd = 70.0;
+#define kAccretionStart 20.0f
+#define kAccretionEnd 70.0f
 
 #define PI 3.141592653f
 
