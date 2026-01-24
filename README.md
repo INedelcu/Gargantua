@@ -3,7 +3,7 @@
 # Gargantua
 ## A black hole simulation and rendering project in Unity
 
-<img src="https://github.com/INedelcu/Gargantua/blob/main/Images/10.png?raw=true" width="1280">
+<img src="https://github.com/INedelcu/Gargantua/blob/main/Images/12.jpg?raw=true" width="1280">
 
 ### What is a black hole?
 ###### *The text bellow is heavily inspired from Wikipedia. Some large portions of text including formulas are copy pasted here.
