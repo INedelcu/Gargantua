@@ -6,10 +6,10 @@
 <img src="https://github.com/INedelcu/Gargantua/blob/main/Images/12.jpg?raw=true" width="1280">
 
 ### What is a black hole?
-###### *The text bellow is heavily inspired from Wikipedia. Some large portions of text including formulas are copy pasted here.
+###### *The text below is heavily inspired from Wikipedia. Some large portions of text including formulas are copy-pasted here.
 A black hole is a region in space with gravity so intense that nothing, not even light, can escape it, formed from the collapsed core of a massive star or other processes, containing immense mass in a tiny volume, defined by a boundary called the "event horizon" where escape becomes impossible.
 
-In 1916, Albert Einstein publishes his theory of gravity also known as the **general theory of relativity** where the **Einstein field equations** (**EFE**) relate the geometry of spacetime to the distribution of matter within it:
+In 1916, Albert Einstein published his theory of gravity also known as the **general theory of relativity** where the **Einstein field equations** (**EFE**) relate the geometry of spacetime to the distribution of matter within it:
 
 $$R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu} + \Lambda g_{\mu \nu} = \frac{8 \pi G}{c^4} T_{\mu \nu}$$
 
@@ -26,9 +26,9 @@ First, **EFE** is an equation (or system of 10 equations) that describe the [geo
 
 The **Schwarzschild metric** (a.k.a the **Schwarzschild solution**) is an exact solution to the **EFE** that describes the [gravitational field](https://en.wikipedia.org/wiki/Gravitational_field "Gravitational field") outside a spherical mass, on the assumption that the [electric charge](https://en.wikipedia.org/wiki/Electric_charge "Electric charge") of the mass, [angular momentum](https://en.wikipedia.org/wiki/Angular_momentum "Angular momentum") of the mass, and universal [cosmological constant](https://en.wikipedia.org/wiki/Cosmological_constant "Cosmological constant") are all zero. The solution is a useful approximation for describing slowly rotating astronomical objects such as many stars including Earth and the Sun and also (what's the most important in this project) black holes. 
 
-There are more complex solutions for other types of black holes that take into account the rotation of the black hole and the electric charge(?) for example: [Kerr black holes](https://en.wikipedia.org/wiki/Kerr_metric) which are similar to to Schwarzschild but have rotation, or [Kerr–Nnewman](https://en.wikipedia.org/wiki/Kerr%E2%80%93Newman_metric) that have both rotation and changes. Looking at the equations of particle motion for the rotating black holes, I see a lot of [trigonometric functions](https://en.wikipedia.org/wiki/Kerr%E2%80%93Newman_metric#Equations_of_motion) and I believe it's a good idea to stick with the simplest one which is the Schwarzschild solution for now.
+There are more complex solutions for other types of black holes that take into account the rotation of the black hole and the electric charge(?) for example: [Kerr black holes](https://en.wikipedia.org/wiki/Kerr_metric) which are similar to Schwarzschild but have rotation, or [Kerr–Newman](https://en.wikipedia.org/wiki/Kerr%E2%80%93Newman_metric) that have both rotation and charge. Looking at the equations of particle motion for the rotating black holes, I see a lot of [trigonometric functions](https://en.wikipedia.org/wiki/Kerr%E2%80%93Newman_metric#Equations_of_motion) and I believe it's a good idea to stick with the simplest one which is the Schwarzschild solution for now.
 
-A **Schwarzschild black hole** or **static black hole** is a  black hole that has neither electric charge nor angular momentum (non-rotating). A Schwarzschild black hole is described by the Schwarzschild metric, and cannot be distinguished from any other Schwarzschild black hole except by its mass.
+A **Schwarzschild black hole** or **static black hole** is a black hole that has neither electric charge nor angular momentum (non-rotating). A Schwarzschild black hole is described by the Schwarzschild metric, and cannot be distinguished from any other Schwarzschild black hole except by its mass.
 
 The Schwarzschild black hole is characterized by a surrounding spherical boundary, called the [event horizon](https://en.wikipedia.org/wiki/Event_horizon "Event horizon"), which is situated at the [Schwarzschild radius](https://en.wikipedia.org/wiki/Schwarzschild_radius "Schwarzschild radius") ($r_{\text{s}}$) often called the radius of a black hole. Any non-rotating and non-charged mass that is smaller than its Schwarzschild radius forms a black hole. Some interesting facts: if the Earth would become a black hole, it would have a radius of 8.9 mm and the Sun would be 3.0 km.
 
@@ -163,7 +163,7 @@ To summarize:
 
 $$\dot{\vec{e_r}}=\dot{\phi}\vec{e_\phi} \ \ \text{and}\ \  \dot{\vec{e_\phi}}=-\dot{\phi}\vec{e_r}$$ 
 
-[To obtain the velocity vector](https://youtu.be/Qu8gp8g5jJ0?t=287), one need to take the derivative of the position vector $\mathbf{\vec{r}}=r\vec{e_r}$:
+[To obtain the velocity vector](https://youtu.be/Qu8gp8g5jJ0?t=287), one needs to take the derivative of the position vector $\mathbf{\vec{r}}=r\vec{e_r}$:
 
 $$\mathbf{\vec{v}}=\frac{d\mathbf{\vec{r}}}{dt}=\frac{d}{dt}\left(r\vec{e_r}\right)=\dot{r}\vec{e_r} + r\dot{\vec{e_r}}$$
 
@@ -171,7 +171,7 @@ Since $\dot{\vec{e_r}}=\dot{\phi}\vec{e_\phi}$:
 
 $$\mathbf{\vec{v}}=\dot{r}\vec{e_r}+r\dot{\phi}\vec{e_{\phi}}$$
 
-[To obtain the acceleration vector](https://www.youtube.com/watch?v=YA2e4-Bv6Wc), we differentiate $\mathbf{\vec{v}}$ with respect of time:
+[To obtain the acceleration vector](https://www.youtube.com/watch?v=YA2e4-Bv6Wc), we differentiate $\mathbf{\vec{v}}$ with respect to time:
 
 $$\mathbf{\vec{a}}=\frac{d\mathbf{\vec{v}}}{dt}=\frac{d}{dt}\left(\dot{r}\vec{e_r}+r\dot{\phi}\vec{e_{\phi}}\right)$$
 
@@ -183,11 +183,11 @@ and
 
 $$\frac{d}{dt}\left(r\dot{\phi}\vec{e_{\phi}}\right)=\dot{r}\dot{\phi}\vec{e_\phi}+r\ddot{\phi}\vec{e_\phi}+r\dot{\phi}\dot{\vec{e_\phi}}[7]$$
 
-Combining [5] and [6] we get:
+Combining [6] and [7] we get:
 
 $$\mathbf{\vec{a}}=\left(\ddot{r}\vec{e_r}+\dot{r}\dot{\vec{e_r}}\right) + \left(\dot{r}\dot{\phi}\vec{e_\phi}+r\ddot{\phi}\vec{e_\phi}+r\dot{\phi}\dot{\vec{e_\phi}}\right)$$
 
-Substituting $\dot{\vec{e_r}}=\dot{\phi}$ and $\dot{\vec{e_\phi}}=-\dot{\phi}\vec{e_r}$:
+Substituting $\dot{\vec{e_r}}=\dot{\phi}\vec{e_\phi}$ and $\dot{\vec{e_\phi}}=-\dot{\phi}\vec{e_r}$:
 
 $$\mathbf{\vec{a}}=\left(\ddot{r}\vec{e_r}+\dot{r}\dot{\phi}\vec{e_\phi}\right) + \left(\dot{r}\dot{\phi}\vec{e_\phi}+r\ddot{\phi}\vec{e_\phi}-r\dot{\phi}^2\vec{e_r}\right)$$
 
