@@ -6,7 +6,7 @@
 <img src="https://github.com/INedelcu/Gargantua/blob/main/Images/12.jpg?raw=true" width="1280">
 
 ### What is a black hole?
-###### *The text below is heavily inspired from Wikipedia. Some large portions of text including formulas are copy-pasted here.
+###### *The text below is heavily inspired by Wikipedia. Some large portions of text including formulas are copy-pasted here.
 A black hole is a region in space with gravity so intense that nothing, not even light, can escape it, formed from the collapsed core of a massive star or other processes, containing immense mass in a tiny volume, defined by a boundary called the "event horizon" where escape becomes impossible.
 
 In 1916, Albert Einstein published his theory of gravity also known as the **general theory of relativity** where the **Einstein field equations** (**EFE**) relate the geometry of spacetime to the distribution of matter within it:
@@ -26,7 +26,7 @@ First, **EFE** is an equation (or system of 10 equations) that describe the [geo
 
 The **Schwarzschild metric** (a.k.a the **Schwarzschild solution**) is an exact solution to the **EFE** that describes the [gravitational field](https://en.wikipedia.org/wiki/Gravitational_field "Gravitational field") outside a spherical mass, on the assumption that the [electric charge](https://en.wikipedia.org/wiki/Electric_charge "Electric charge") of the mass, [angular momentum](https://en.wikipedia.org/wiki/Angular_momentum "Angular momentum") of the mass, and universal [cosmological constant](https://en.wikipedia.org/wiki/Cosmological_constant "Cosmological constant") are all zero. The solution is a useful approximation for describing slowly rotating astronomical objects such as many stars including Earth and the Sun and also (what's the most important in this project) black holes. 
 
-There are more complex solutions for other types of black holes that take into account the rotation of the black hole and the electric charge(?) for example: [Kerr black holes](https://en.wikipedia.org/wiki/Kerr_metric) which are similar to Schwarzschild but have rotation, or [Kerr–Newman](https://en.wikipedia.org/wiki/Kerr%E2%80%93Newman_metric) that have both rotation and charge. Looking at the equations of particle motion for the rotating black holes, I see a lot of [trigonometric functions](https://en.wikipedia.org/wiki/Kerr%E2%80%93Newman_metric#Equations_of_motion) and I believe it's a good idea to stick with the simplest one which is the Schwarzschild solution for now.
+There are more complex solutions for other types of black holes that take into account, for example, the rotation and electric charge of the black hole: the [Kerr metric](https://en.wikipedia.org/wiki/Kerr_metric) describes rotating uncharged black holes (Kerr black holes), while the [Kerr–Newman metric](https://en.wikipedia.org/wiki/Kerr%E2%80%93Newman_metric) describes rotating charged black holes (Kerr–Newman black holes). Looking at the equations of particle motion for the rotating black holes, I see a lot of [trigonometric functions](https://en.wikipedia.org/wiki/Kerr%E2%80%93Newman_metric#Equations_of_motion) and I believe it's a good idea to stick with the simplest one which is the Schwarzschild solution for now.
 
 A **Schwarzschild black hole** or **static black hole** is a black hole that has neither electric charge nor angular momentum (non-rotating). A Schwarzschild black hole is described by the Schwarzschild metric, and cannot be distinguished from any other Schwarzschild black hole except by its mass.
 
