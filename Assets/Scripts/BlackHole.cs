@@ -25,7 +25,7 @@ public class BlackHole : MonoBehaviour
     void Start()
     {
     }
-    
+
     void Update()
     {
     }
@@ -34,7 +34,7 @@ public class BlackHole : MonoBehaviour
     {
         output?.Release();
     }
-    
+
     void AllocateResources()
     {
         if (cameraWidth != Camera.main.pixelWidth || cameraHeight != Camera.main.pixelHeight)
@@ -72,15 +72,15 @@ public class BlackHole : MonoBehaviour
             {
                 float t = (float)i / (float)(pixels.Length - 1);
                 float r = 3.5f;
-                float g = 2.8f * Mathf.Exp(-2.0f * t);
-                float b = 2.4f * Mathf.Exp(-5.0f * t);
+                float g = 3.0f * Mathf.Exp(-2.0f * t);
+                float b = 2.8f * Mathf.Exp(-5.0f * t);
 
                 // Alpha gradient
                 // Increase alpha sharply from 0 outwards
-                float a = 1 - Mathf.Exp(-30.0f * t);
+                float a = 1 - Mathf.Exp(-50.0f * t);
 
-                // Decrease alpha smoothly from 0.2 to 1.0
-                a *= 1 - Mathf.SmoothStep(0.2f, 1, t);
+                // Decrease alpha smoothly from 1 to 0
+                a *= Mathf.SmoothStep(1, 0, t);
 
                 pixels[i] = new Color(r, g, b, a);
             }
