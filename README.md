@@ -264,6 +264,10 @@ The HLSL code for this would be:
     // Sample the environment cubemap using (pos - prevPos) vector
 ```
 
+## A simulation done with Claude Code where I display a few photon paths
+
+<img src="https://github.com/INedelcu/Gargantua/blob/main/trajectories.svg" width="1280">
+
 ## How to interact with the scene
 
 When in Play Mode, hold right mouse button down and use WASD keys to navigate through the scene.
