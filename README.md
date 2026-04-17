@@ -266,7 +266,7 @@ The HLSL code for this would be:
 
 ## A simulation done with Claude Code where I display a few photon paths
 
-<img src="https://github.com/INedelcu/Gargantua/blob/main/trajectories.svg width="1280">
+<img src="https://github.com/INedelcu/Gargantua/blob/main/trajectories.svg" width="1280">
 
 ## How to interact with the scene
 
