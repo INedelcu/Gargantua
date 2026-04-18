@@ -32,8 +32,8 @@ Texture2D<float3> g_PlanetTex;
 // Unity built-in
 float4x4 unity_CameraToWorld;
 
-// Here we simulate a theoretical Schwarzschild black hole. This is a uncharged, non-rotating, spherically symmetric mass.
-// In reality, all (Kerr) black holes rotate slower or faster.
+// Here we simulate a theoretical Schwarzschild black hole. This is an uncharged, non-rotating, spherically symmetric mass.
+// In reality, all black holes rotate (Kerr) to some degree, some slower and some faster.
 // The initial spin rate of a black hole is caused by the conservation of the residual angular momentum of the collapsed stellar core.
 // After that, the spin rate can change dramatically.
 
@@ -56,7 +56,7 @@ float4x4 unity_CameraToWorld;
 #define kMaxRadius      2000.0f
 #define kMaxSteps       500
 
-// If path transmittance is lower than this value then we consider that the accumulated color is "opaque" and integrations is stopped
+// If path transmittance is lower than this value then we consider that the accumulated color is "opaque" and integration is stopped.
 #define kTransmittanceLowerThreshold 0.005f
 
 // Debug mode to replace the accretion disk texture sample with a per mip color palette, interpolated by lod.
@@ -91,16 +91,16 @@ float RaySphereIntersect(float3 rayOrig, float3 rayDir, float3 spherePos, float 
 
 void SampleAccretionDisk(float3 pos, float3 prevPos, inout float3 color, inout float transmittance)
 {
-    // Check if we crossed y = 0 plane
-    // If signs are the same it means the position are on the same side of the plane y = 0)
+    // Check if we crossed the y = 0 plane.
+    // If signs are the same it means the positions are on the same side of the plane y = 0.
     if (pos.y * prevPos.y > 0)
         return;
 
-    // Calculate t where y is 0
+    // Calculate t where y is 0.
     // Linear interpolation: 0 = prevPos.y + t * (pos.y - prevPos.y) -> t = -prevPos.y / (pos.y - prevPos.y)
     float dY = pos.y - prevPos.y;
 
-    // Avoid dividing by 0?
+    // Avoid division by zero.
     if (abs(dY) < 1e-6f)
         return;
 
@@ -317,8 +317,7 @@ void CSMain (uint3 id : SV_DispatchThreadID)
 
     float3 color = float3(0, 0, 0);
 
-    // Calculate the trajectory (null geodesic) of the photon around the black hole
-    // Variable-step RK4 integration of the photon's null geodesic to have variable step size and better performance.
+    // Calculate the trajectory (null geodesic) of the photon around the black hole using variable-step RK4 integration.
     // The step size is bigger far from the black hole and smaller near the photon sphere (r = 1.5*Rs) where the curvature is stronger.
     for (uint i = 0; i < kMaxSteps; i++)
     {
