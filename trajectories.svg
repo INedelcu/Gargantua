@@ -77,7 +77,7 @@
     <text x="-1170" y="-1165" font-weight="bold" font-size="24">Gravitational lensing — 10 photon trajectories</text>
     <text x="-1170" y="-1130" font-size="20" fill="#aaaaaa">Start (0, 0, -750). Ten directions tilted in the x-z plane with impact parameter b = 750·sin(α).</text>
     <text x="-1170" y="-1102" font-size="20" fill="#aaaaaa">Shader constants: kRs=100, kStepMin=1, kStepMax=35, kMaxRadius=2000. Integration stops at capture (r&lt;Rs) or escape (r&gt;kMaxRadius).</text>
-    <text x="-1170" y="-1074" font-size="20" fill="#aaaaaa">The blue dashed circle marks b_crit = 3√3/2 · Rs ≈ 259.81 — rays with b&lt;b_crit are captured; rays with b&gt;b_crit escape.</text>
+    <text x="-1170" y="-1074" font-size="20" fill="#aaaaaa">The green dashed circle marks b_crit = 3√3/2 · Rs ≈ 259.81 — rays with b&lt;b_crit are captured; rays with b&gt;b_crit escape.</text>
   </g>
 
   <!-- Legend -->
