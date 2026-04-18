@@ -22,7 +22,7 @@
   <circle cx="0" cy="0" r="750" fill="none" stroke="#884422" stroke-width="1" opacity="0.7"/>
 
   <!-- Critical photon-capture circle b_crit = 3sqrt(3)/2 * Rs ≈ 259.81 (impact-parameter ref) -->
-  <circle cx="0" cy="0" r="259.81" fill="none" stroke="#44aaff" stroke-width="0.8" stroke-dasharray="3,6" opacity="0.55"/>
+  <circle cx="0" cy="0" r="259.81" fill="none" stroke="#11ff55" stroke-width="1.2" stroke-dasharray="3,6" opacity="0.75"/>
 
   <!-- Photon sphere r = 1.5 Rs -->
   <circle cx="0" cy="0" r="150" fill="none" stroke="#ffdd44" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.85"/>
@@ -46,7 +46,7 @@
 
   <!-- Common start point -->
   <circle cx="-750" cy="0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
-  <text x="-750" y="-14" text-anchor="middle" font-size="13" fill="#ffffff">Start (0, 0, -750)</text>
+  <text x="-750" y="-14" text-anchor="middle" font-size="16" fill="#ffffff">Start (0, 0, -750)</text>
 
   <!-- Trajectories -->
   <g>
@@ -63,37 +63,37 @@
   </g>
 
   <!-- Feature labels -->
-  <g fill="#ffffff" font-size="12">
+  <g fill="#ffffff" font-size="18">
     <text x="0" y="-112" text-anchor="middle" fill="#cccccc">Event horizon  Rs = 100</text>
     <text x="108" y="-148" fill="#ffdd44">Photon sphere  r = 150</text>
-    <text x="175" y="-260" fill="#66ccff">Critical impact parameter  b_crit ≈ 259.81</text>
+    <text x="125" y="-260" fill="#11ff55">Critical impact parameter  b_crit ≈ 259.81</text>
     <text x="210" y="-196" fill="#ffcc88">Disk inner  r = 200</text>
     <text x="560" y="-570" fill="#884422">Disk outer  r = 750</text>
     <text x="440" y="340" font-size="16" fill="#ffaa66" opacity="0.85">Accretion disk</text>
   </g>
 
   <!-- Title -->
-  <g font-size="18" fill="#eeeeee">
-    <text x="-1170" y="-1165" font-weight="bold" font-size="22">Gravitational lensing — 10 photon trajectories</text>
-    <text x="-1170" y="-1140" font-size="12" fill="#aaaaaa">Start (0, 0, -750). Ten directions tilted in the x-z plane with impact parameter b = 750·sin(α).</text>
-    <text x="-1170" y="-1122" font-size="12" fill="#aaaaaa">Shader constants: kRs=100, kStepMin=1, kStepMax=35, kMaxRadius=2000. Integration stops at capture (r&lt;Rs) or escape (r&gt;kMaxRadius).</text>
-    <text x="-1170" y="-1104" font-size="12" fill="#aaaaaa">The blue dashed circle marks b_crit = 3√3/2 · Rs ≈ 259.81 — rays with b&lt;b_crit are captured; rays with b&gt;b_crit escape.</text>
+  <g font-size="22" fill="#eeeeee">
+    <text x="-1170" y="-1165" font-weight="bold" font-size="24">Gravitational lensing — 10 photon trajectories</text>
+    <text x="-1170" y="-1130" font-size="20" fill="#aaaaaa">Start (0, 0, -750). Ten directions tilted in the x-z plane with impact parameter b = 750·sin(α).</text>
+    <text x="-1170" y="-1102" font-size="20" fill="#aaaaaa">Shader constants: kRs=100, kStepMin=1, kStepMax=35, kMaxRadius=2000. Integration stops at capture (r&lt;Rs) or escape (r&gt;kMaxRadius).</text>
+    <text x="-1170" y="-1074" font-size="20" fill="#aaaaaa">The blue dashed circle marks b_crit = 3√3/2 · Rs ≈ 259.81 — rays with b&lt;b_crit are captured; rays with b&gt;b_crit escape.</text>
   </g>
 
   <!-- Legend -->
   <g>
-    <rect x="-1185" y="635" width="700" height="220" fill="#000000" fill-opacity="0.55" stroke="#334455" stroke-width="0.8"/>
-    <text x="-1170" y="655" font-weight="bold" font-size="14" fill="#ffffff">Legend — impact parameter b (world units)</text>
-    <line x1="-1170" y1="660" x2="-1120" y2="660" stroke="#ff4040" stroke-width="2.5"/><text x="-1110" y="664" font-size="12" fill="#dddddd">b =  30  (α =  2.29°)  —  captured  (112 steps)</text>
-    <line x1="-1170" y1="680" x2="-1120" y2="680" stroke="#ff8030" stroke-width="2.5"/><text x="-1110" y="684" font-size="12" fill="#dddddd">b =  80  (α =  6.12°)  —  captured  (115 steps)</text>
-    <line x1="-1170" y1="700" x2="-1120" y2="700" stroke="#ffcc30" stroke-width="2.5"/><text x="-1110" y="704" font-size="12" fill="#dddddd">b = 150  (α = 11.54°)  —  captured  (128 steps)</text>
-    <line x1="-1170" y1="720" x2="-1120" y2="720" stroke="#aaff30" stroke-width="2.5"/><text x="-1110" y="724" font-size="12" fill="#dddddd">b = 220  (α = 17.06°)  —  captured  (170 steps)</text>
-    <line x1="-1170" y1="740" x2="-1120" y2="740" stroke="#30ffaa" stroke-width="2.5"/><text x="-1110" y="744" font-size="12" fill="#dddddd">b = 255  (α = 19.88°)  —  captured  (324 steps)</text>
-    <line x1="-1170" y1="760" x2="-1120" y2="760" stroke="#30ccff" stroke-width="2.5"/><text x="-1110" y="764" font-size="12" fill="#dddddd">b = 262  (α = 20.45°)  —  escaped  (308 steps)</text>
-    <line x1="-1170" y1="780" x2="-1120" y2="780" stroke="#4080ff" stroke-width="2.5"/><text x="-1110" y="784" font-size="12" fill="#dddddd">b = 270  (α = 21.10°)  —  escaped  (239 steps)</text>
-    <line x1="-1170" y1="800" x2="-1120" y2="800" stroke="#8060ff" stroke-width="2.5"/><text x="-1110" y="804" font-size="12" fill="#dddddd">b = 300  (α = 23.58°)  —  escaped  (173 steps)</text>
-    <line x1="-1170" y1="820" x2="-1120" y2="820" stroke="#c040ff" stroke-width="2.5"/><text x="-1110" y="824" font-size="12" fill="#dddddd">b = 380  (α = 30.44°)  —  escaped  (125 steps)</text>
-    <line x1="-1170" y1="840" x2="-1120" y2="840" stroke="#ff40aa" stroke-width="2.5"/><text x="-1110" y="844" font-size="12" fill="#dddddd">b = 500  (α = 41.81°)  —  escaped  (97 steps)</text>
+    <rect x="-1185" y="615" width="700" height="250" fill="#000000" fill-opacity="0.55" stroke="#334455" stroke-width="0.8"/>
+    <text x="-1170" y="640" font-weight="bold" font-size="20" fill="#ffffff">Legend — impact parameter b (world units)</text>
+    <line x1="-1170" y1="660" x2="-1120" y2="660" stroke="#ff4040" stroke-width="2.5"/><text x="-1110" y="664" font-size="16" fill="#dddddd">b =  30  (α =  2.29°)  —  captured  (112 steps)</text>
+    <line x1="-1170" y1="680" x2="-1120" y2="680" stroke="#ff8030" stroke-width="2.5"/><text x="-1110" y="684" font-size="16" fill="#dddddd">b =  80  (α =  6.12°)  —  captured  (115 steps)</text>
+    <line x1="-1170" y1="700" x2="-1120" y2="700" stroke="#ffcc30" stroke-width="2.5"/><text x="-1110" y="704" font-size="16" fill="#dddddd">b = 150  (α = 11.54°)  —  captured  (128 steps)</text>
+    <line x1="-1170" y1="720" x2="-1120" y2="720" stroke="#aaff30" stroke-width="2.5"/><text x="-1110" y="724" font-size="16" fill="#dddddd">b = 220  (α = 17.06°)  —  captured  (170 steps)</text>
+    <line x1="-1170" y1="740" x2="-1120" y2="740" stroke="#30ffaa" stroke-width="2.5"/><text x="-1110" y="744" font-size="16" fill="#dddddd">b = 255  (α = 19.88°)  —  captured  (324 steps)</text>
+    <line x1="-1170" y1="760" x2="-1120" y2="760" stroke="#30ccff" stroke-width="2.5"/><text x="-1110" y="764" font-size="16" fill="#dddddd">b = 262  (α = 20.45°)  —  escaped  (308 steps)</text>
+    <line x1="-1170" y1="780" x2="-1120" y2="780" stroke="#4080ff" stroke-width="2.5"/><text x="-1110" y="784" font-size="16" fill="#dddddd">b = 270  (α = 21.10°)  —  escaped  (239 steps)</text>
+    <line x1="-1170" y1="800" x2="-1120" y2="800" stroke="#8060ff" stroke-width="2.5"/><text x="-1110" y="804" font-size="16" fill="#dddddd">b = 300  (α = 23.58°)  —  escaped  (173 steps)</text>
+    <line x1="-1170" y1="820" x2="-1120" y2="820" stroke="#c040ff" stroke-width="2.5"/><text x="-1110" y="824" font-size="16" fill="#dddddd">b = 380  (α = 30.44°)  —  escaped  (125 steps)</text>
+    <line x1="-1170" y1="840" x2="-1120" y2="840" stroke="#ff40aa" stroke-width="2.5"/><text x="-1110" y="844" font-size="16" fill="#dddddd">b = 500  (α = 41.81°)  —  escaped  (97 steps)</text>
   </g>
 
 </svg>
