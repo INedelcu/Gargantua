@@ -11,6 +11,9 @@ public class BlackHole : MonoBehaviour
 
     public Texture2D accretionDiskTexture = null;
 
+    [Range(-5.0f, 5.0f)]
+    public float accretionDiskLodBias = 0.0f;
+
     public Texture2D millersPlanetTexture = null;
 
     public GameObject millersPlanet = null;
@@ -125,6 +128,7 @@ public class BlackHole : MonoBehaviour
         shader.SetTexture(kernelIndex, Shader.PropertyToID("g_AccretionDiskGradient"), accretionDiskGradient);
 
         shader.SetFloat(Shader.PropertyToID("g_AccretionDiskSpeed"), Application.isPlaying ? Time.realtimeSinceStartup * 0.1f : 0);
+        shader.SetFloat(Shader.PropertyToID("g_AccretionDiskLodBias"), accretionDiskLodBias);
 
         shader.SetVector(Shader.PropertyToID("g_PlanetPosition"), millersPlanet.transform.position);
         shader.SetTexture(kernelIndex, Shader.PropertyToID("g_PlanetTex"), millersPlanetTexture);
@@ -138,6 +142,6 @@ public class BlackHole : MonoBehaviour
 
         shader.Dispatch(kernelIndex, threadGroupCountX, threadGroupCountY, threadGroupCountZ);
 
-        Graphics.Blit(output, dest); 
+        Graphics.Blit(output, dest);
     }
 }

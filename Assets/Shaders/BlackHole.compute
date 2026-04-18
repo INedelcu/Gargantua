@@ -12,6 +12,7 @@ SamplerState my_linear_clamp_sampler;
 Texture2D<float3> g_AccretionDiskTex;
 SamplerState sampler_g_AccretionDiskTex;
 float g_AccretionDiskSpeed;
+float g_AccretionDiskLodBias;
 
 float g_Zoom;
 float g_AspectRatio;
@@ -150,7 +151,7 @@ void SampleAccretionDisk(float3 pos, float3 prevPos, inout float3 color, inout f
     float dv = footprintWorld / (kAccretionEnd - kAccretionStart) * texSize.y;
 
     // Log2 of the fat-axis footprint = trilinear mip level.
-    float lod = 0.5f * log2(max(du * du, dv * dv));
+    float lod = 0.5f * log2(max(du * du, dv * dv)) + g_AccretionDiskLodBias;
 
 #if kDebugDiskLodColors
     // Per-mip debug colors
