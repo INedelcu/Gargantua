@@ -33,7 +33,7 @@ float4x4 unity_CameraToWorld;
 
 // Here we simulate a theoretical Schwarzschild black hole. This is a uncharged, non-rotating, spherically symmetric mass.
 // In reality, all (Kerr) black holes rotate slower or faster.
-// The initial spin rate of a black hole is caused by the conservation of the residual angular momentum of the colapsed stellar core.
+// The initial spin rate of a black hole is caused by the conservation of the residual angular momentum of the collapsed stellar core.
 // After that, the spin rate can change dramatically.
 
 // For non-rotating black holes, the Schwarzschild radius and the event horizon are the same (Rs = 2*G*M/c^2)
@@ -223,10 +223,11 @@ float3 GetAccelerationState(float3 pos, float3 vel)
 {
     float3 L = cross(pos, vel);
     float h2 = dot(L, L);
-    float r = length(pos);
-    float r2 = r * r;
-    float r5 = r2 * r2 * r;
-    return pos * (-1.5f * kRs * h2 / r5);
+    float r2 = dot(pos, pos);
+    float inv_r = rsqrt(r2);
+    float inv_r2 = inv_r * inv_r;
+    float inv_r5 = inv_r2 * inv_r2 * inv_r;
+    return pos * (-1.5f * kRs * h2 * inv_r5);
 }
 
 // Step size shrinks near the photon sphere (r = 1.5*Rs).
