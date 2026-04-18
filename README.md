@@ -47,7 +47,7 @@ $${d s}^{2} = c^2 d \tau^{2} = \left (1 - \frac{r_s}{r} \right) c^2 dt^2 - \left
 
 Where:
 
- - $d\Omega^{2}$ is the metric on the two-sphere, i.e. $d\Omega^{2}=d\theta^{2}+\sin^{2}{\theta}\,d\phi^2$. Furthermore: 
+ - $d\Omega^{2}$ is the metric on the two-sphere, i.e. $d\Omega^{2}=d\theta^{2}+\sin^{2}{\theta}d\phi^2$. Furthermore: 
  - $d\tau^2$ is positive for timelike curves, in which case $\tau$</math> is the [proper time](https://en.wikipedia.org/wiki/Proper_time) (time measured by a clock moving along the same [world line](https://en.wikipedia.org/wiki/World_line) with a test particle)
  - $c$ is the [speed of light](https://en.wikipedia.org/wiki/Speed_of_light)
  -  $t$ is, for $r > r_{s}$, the time coordinate (measured by a clock located infinitely far from the massive body and stationary with respect to it)
