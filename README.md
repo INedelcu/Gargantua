@@ -47,7 +47,7 @@ $${d s}^{2} = c^2 d \tau^{2} = \left (1 - \frac{r_s}{r} \right) c^2 dt^2 - \left
 
 Where:
 
- - ${\Omega}^{2}$ is the metric on the two-sphere, i.e. ${\Omega}^{2}=\left(d\theta^{2}+\sin^{2}{\theta}d\phi^2\right)$ Furthermore: 
+ - $d\Omega^{2}$ is the metric on the two-sphere, i.e. $d\Omega^{2}=d\theta^{2}+\sin^{2}{\theta}\,d\phi^2$. Furthermore: 
  - $d\tau^2$ is positive for timelike curves, in which case $\tau$</math> is the [proper time](https://en.wikipedia.org/wiki/Proper_time) (time measured by a clock moving along the same [world line](https://en.wikipedia.org/wiki/World_line) with a test particle)
  - $c$ is the [speed of light](https://en.wikipedia.org/wiki/Speed_of_light)
  -  $t$ is, for $r > r_{s}$, the time coordinate (measured by a clock located infinitely far from the massive body and stationary with respect to it)
@@ -59,7 +59,7 @@ Where:
 
 These coordinates are used for the exterior of the black hole only. For both the exterior and interior of the black hole there are other types of coordinates e.g. [Kruskal–Szekeres](https://en.wikipedia.org/wiki/Kruskal%E2%80%93Szekeres_coordinates) but we will not dive into the black hole for this simulation :grin:.
 
-[**Schwarzschild geodesics**](https://en.wikipedia.org/wiki/Schwarzschild_geodesics) describe the motion of test particles in the [gravitational field](https://en.wikipedia.org/wiki/Gravitational_field) of a central fixed mass $M$, that is, motion in the Schwarzschild metric. Photons travel along paths called [null geodesic](https://physics.stackexchange.com/questions/188859/what-is-a-null-geodesic) meaning that $ds^2=0$ where proper time $\tau$ is 0 (the time doesn't "tick" for a photon on its geodesic).
+[**Schwarzschild geodesics**](https://en.wikipedia.org/wiki/Schwarzschild_geodesics) describe the motion of test particles in the [gravitational field](https://en.wikipedia.org/wiki/Gravitational_field) of a central fixed mass $M$, that is, motion in the Schwarzschild metric. Photons travel along paths called [null geodesics](https://physics.stackexchange.com/questions/188859/what-is-a-null-geodesic) meaning that $ds^2=0$ where proper time $\tau$ is 0 (the time doesn't "tick" for a photon on its geodesic).
 
 Since the spacetime metric around Schwarzschild black hole is symmetric about $\theta = \frac{\pi}{2}$, any geodesic that begins moving in that plane will remain in that plane indefinitely. Therefore, we orient the coordinate system so that the orbit of the particle lies in that plane and fix the $\theta$ coordinate to be $\frac {\pi }{2}$ ($d\theta=0$ and $\sin\theta=1$) so that the metric (of this plane) simplifies to:
 
@@ -193,7 +193,7 @@ $$\mathbf{\vec{a}}=\left(\ddot{r}\vec{e_r}+\dot{r}\dot{\phi}\vec{e_\phi}\right) 
 
 Grouping the terms by $\vec{e_r}$ and $\vec{e_\phi}$ we finally get the acceleration vector:
 
-$$\mathbf{\vec{a}}=\left(\ddot{r}-r\dot{\phi^2}\right)\vec{e_r} + \left(r\ddot{\phi}+2\dot{r}\dot{\phi}\right)\vec{e_\phi}$$
+$$\mathbf{\vec{a}}=\left(\ddot{r}-r\dot{\phi}^2\right)\vec{e_r} + \left(r\ddot{\phi}+2\dot{r}\dot{\phi}\right)\vec{e_\phi}$$
 
 So the radial component of the acceleration vector is:
 
@@ -201,7 +201,7 @@ $$a_r=\ddot{r}-r\dot{\phi}^2$$
 
 Note that, since the gravitation of the black hole acts like a central force, it only acts in the radial direction (towards the singularity), thus the acceleration doesn't have a tangential component (the factor of $\vec{e_\phi}$ must be zero).
 
-Combining with [5] with [3]:
+Combining [5] with [3]:
 
 $$a_r=\frac{h^2}{r^3} - \frac{3}{2}\frac{r_{s}h^2}{r^4} -r\left(\frac{h^2}{r^4}\right)=-\frac{3}{2}\frac{r_{s}h^2}{r^4}$$
 
@@ -209,7 +209,7 @@ $a_r$ is the magnitude of the radial acceleration vector, and to get a vector, i
 
 $$\vec{\mathbf{a_r}}=-\frac{3}{2}\frac{r_{s}h^2}{r^5}\mathbf{\vec{r}}$$
 
-This is a function of $r$ (since $h$ is constant) and it can be noticed that points in the opposite direction of $\vec{\mathbf{r}}$ basically toward the center of the black hole.
+This is a function of $r$ (since $h$ is constant) and it can be noticed that it points in the opposite direction of $\vec{\mathbf{r}}$, basically toward the center of the black hole.
 
 The HLSL code for this would be:
 ```
