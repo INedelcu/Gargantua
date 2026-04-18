@@ -40,16 +40,20 @@ float4x4 unity_CameraToWorld;
 // For Earth this would be 9 mm and for the biggest known black holes this is 194 billion km.
 #define kRs 100.0f
 
-// Variable-step RK4: step = lerp(kStepMin, kStepMax, saturate((r - 1.5*Rs) / (kAccretionEnd - 1.5*Rs))).
-// Rays past kMaxRadius sample the cubemap directly; kMaxSteps is the safety budget.
-#define kStepMin        1.0f
-#define kStepMax        35.0f
-#define kMaxRadius      2000.0f
-#define kMaxSteps       500
-
 // In this simulation, the accretion disk is "artificially" generated for art purposes only and for better observing the gravitational lens effect.
 #define kAccretionStart 200.0f
 #define kAccretionEnd 750.0f
+
+// Variable-step RK4.
+// Step size is adapted to be smaller near the photon sphere (r = 1.5*Rs) where the curvature is stronger and bigger far from the black hole for better performance.
+#define kStepMin        2.0f
+#define kStepMax        50.0f
+#define kStepFar        300.0f
+
+// Rays past kMaxRadius sample the cubemap directly; kMaxSteps is the safety budget.
+#define kFarFieldRadius (1.5f * kAccretionEnd)
+#define kMaxRadius      2000.0f
+#define kMaxSteps       500
 
 // If path transmittance is lower than this value then we consider that the accumulated color is "opaque" and integrations is stopped
 #define kTransmittanceLowerThreshold 0.005f
@@ -231,11 +235,26 @@ float3 GetAccelerationState(float3 pos, float3 vel)
 }
 
 // Step size shrinks near the photon sphere (r = 1.5*Rs).
-float GetStepSize(float3 pos)
+
+// Rays beyond kFarFieldRadius use kStepFar.
+// Step is driven by max(r, b) where b is the impact parameter — a high-b ray
+// near the BH still gets big steps since its closest approach is set by b.
+float GetStepSize(float3 pos, float3 vel)
 {
     float r = length(pos);
 
-    float t = saturate((r - 1.5f * kRs) / (kAccretionEnd - 1.5f * kRs));
+    if (r > kFarFieldRadius)
+        return kStepFar;
+
+    float b = length(cross(pos, vel));
+    float rEff = max(r, b);
+
+    // Inside the disk's radial band, soften the b-based boost so disk-plane
+    // crossings still get fine enough steps for accurate intersection.
+    if (r < kAccretionEnd)
+        rEff = min(rEff, r * 1.5f);
+
+    float t = saturate((rEff - 1.5f * kRs) / (kAccretionEnd - 1.5f * kRs));
 
     return lerp(kStepMin, kStepMax, t);
 }
@@ -321,7 +340,7 @@ void CSMain (uint3 id : SV_DispatchThreadID)
 
         float3 prevPos = pos;
 
-        float stepSize = GetStepSize(pos);
+        float stepSize = GetStepSize(pos, vel);
 
         RK4Step(pos, vel, stepSize);
 
