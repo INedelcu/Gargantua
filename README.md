@@ -219,9 +219,9 @@ The HLSL code for this would be:
     #define kStepSize 0.5
     #define kMaxSteps 1000
 
-    // r2 is the radial distance squared, h2 is the constant angular momentum (must be recomputed if the step size is not constant)
-    float3 GetAcceleration(float r2, float h2)
+    float3 GetAcceleration(float3 pos, float h2)
     {
+       float r2 = dot(pos, pos);
        float r = sqrt(r2);
        float r5 = r2 * r2 * r;
        return pos * (-1.5 * kRs * h2 / r5);
@@ -245,8 +245,7 @@ The HLSL code for this would be:
     float3 prevPos = pos;
     
     // Compute next position: x_1
-    float r2 = dot(pos, pos);
-    pos = prevPos + vel * kStepSize + 0.5f * GetAcceleration(r2, h2) * kStepSize * kStepSize;
+    pos = prevPos + vel * kStepSize + 0.5f * GetAcceleration(pos, h2) * kStepSize * kStepSize;
     
     // Calculate the trajectory of the photon around the black hole
     // https://en.wikipedia.org/wiki/Verlet_integration#Basic_St%C3%B8rmer%E2%80%93Verlet
@@ -262,7 +261,7 @@ The HLSL code for this would be:
         }
 
         // Compute x_(n+1)
-        float3 nextPos = 2 * pos - prevPos + GetAcceleration(r2, h2) * kStepSize * kStepSize;
+        float3 nextPos = 2 * pos - prevPos + GetAcceleration(pos, h2) * kStepSize * kStepSize;
 		
         prevPos = pos;
                 
