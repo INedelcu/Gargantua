@@ -216,7 +216,7 @@ The HLSL code for this would be:
     #define kRs 50.0
 	
     // These should depend on the Rs actually
-    #define kStepSize 0.2
+    #define kStepSize 0.5
     #define kMaxSteps 1000
     
     float3 GetAcceleration(float3 pos, float h2)
@@ -227,6 +227,7 @@ The HLSL code for this would be:
     }
 
     // For computing the path, since the acceleration depends on positon only we can use Stormer-Verlet integration
+    // If the step size is variable then another integration method should be used, for example Runge-Kutta 4 (RK4)
     // Assume the initial ray direction in world space is called rayDirection
     // The origin is actually the camera position
     // Initial position and velocity: x_0
