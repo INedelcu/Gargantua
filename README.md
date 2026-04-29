@@ -222,19 +222,23 @@ The HLSL code for this would be:
     float3 GetAcceleration(float3 pos, float h2)
     {
        float r2 = dot(pos, pos);
-       float r5 = pow(r2, 2.5);       
+       float r = sqrt(r2);
+       float r5 = r2 * r2 * r;
        return pos * (-1.5 * kRs * h2 / r5);
     }
 
     // For computing the path, since the acceleration depends on positon only we can use Stormer-Verlet integration
     // If the step size is variable then another integration method should be used, for example Runge-Kutta 4 (RK4)
+
     // Assume the initial ray direction in world space is called rayDirection
     // The origin is actually the camera position
     // Initial position and velocity: x_0
     float3 pos = CameraPos;
+
+    // rayDirection must be normalize
     float3 vel = rayDirection;
 
-    // Precalculate the angular momentum which is constant during integration
+    // Precalculate the angular momentum which is constant during integration (only when using Stormer-Verlet)
     float h = length(cross(pos, vel));
     float h2 = h*h;
     
@@ -246,12 +250,14 @@ The HLSL code for this would be:
     // Calculate the trajectory of the photon around the black hole
     // https://en.wikipedia.org/wiki/Verlet_integration#Basic_St%C3%B8rmer%E2%80%93Verlet
     for (int i = 0; i < kMaxSteps; i++)
-    { 
+    {
+        float r2 = dot(pos, pos);
+
         // Check to see if pos is inside the event horizon
-        if (dot(pos, pos) < kRs * kRs)
+        if (r2 < kRs * kRs)
         {
             // Stop the integration. We can just return black.
-            return;
+            return float3(0, 0, 0);
         }
 
         // Compute x_(n+1)
