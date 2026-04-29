@@ -245,7 +245,8 @@ The HLSL code for this would be:
     float3 prevPos = pos;
     
     // Compute next position: x_1
-    pos = prevPos + vel * kStepSize + 0.5f * GetAcceleration(pos, h2) * kStepSize * kStepSize;
+    float r2 = dot(pos, pos);
+    pos = prevPos + vel * kStepSize + 0.5f * GetAcceleration(r2, h2) * kStepSize * kStepSize;
     
     // Calculate the trajectory of the photon around the black hole
     // https://en.wikipedia.org/wiki/Verlet_integration#Basic_St%C3%B8rmer%E2%80%93Verlet
