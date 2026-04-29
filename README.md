@@ -235,7 +235,7 @@ The HLSL code for this would be:
     // Initial position and velocity: x_0
     float3 pos = CameraPos;
 
-    // rayDirection must be normalize
+    // rayDirection must be normalized
     float3 vel = rayDirection;
 
     // Precalculate the angular momentum which is constant during integration (only when using Stormer-Verlet)
